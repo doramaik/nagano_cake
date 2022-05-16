@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class PublicAddressesController < ApplicationController
   def index
   end
 
