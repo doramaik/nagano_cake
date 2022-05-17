@@ -1,0 +1,23 @@
+<body>
+  <div>
+    <main>
+      <div container>
+        <div row>
+          <h2>商品一覧</h2>
+            <% @items.each do |item| %>
+              <tr>
+                  <td><%= image_tag get_item_image(50,50) %></td>
+                  <td><%= link_to item.name, root_path %></td>
+                  <td><%= item.text %></td>
+                  <td><%= item.price %></td>
+                  <td><%= item.is_active %></td>
+              </tr>        
+            <% end %>
+          <div class = form-group>
+              <%= f.submit 'Create Item', class: "btn btn-sm btn-success" %>
+          </div>
+        </div>
+        </div>
+    </main>
+  </div>
+</body>
