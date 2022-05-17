@@ -15,6 +15,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @items = Item.all
+    @item = item.new
   end
 
   def show
