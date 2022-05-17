@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_for :customers
 
 
-  root to: "homes#top"
-  
+
+
   namespace :admin do
+    root to: "homes#top"
     #会員
     resources :customers
     #ジャンル
@@ -15,9 +16,9 @@ Rails.application.routes.draw do
     #注文
     resources :orders
   end
-  
+
   namespace :public do
-    
+    root to: "homes#top"
     #住所
     resources :addresses
     #カート商品
@@ -31,12 +32,12 @@ Rails.application.routes.draw do
     get "orders/thanks", to: 'orders#thanks'
     #home
     resources :homes
-    
+
     get "home/about" => 'homes#about'
     #会員
     resources :customers
   end
-  
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
