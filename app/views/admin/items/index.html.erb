@@ -1,37 +1,8 @@
 <body>
+
     <main>
       <div container>
         <div row>
           <h2>商品一覧</h2>
-            <table>
-              <thead>
-                <tr>商品ID</tr>
-                <tr>商品名</tr>
-                <tr>税抜価格</tr>
-                <tr>ジャンル</tr>
-                <tr>ステータス</tr>
-              </thead>
-              <tbody>
-                <% @items.each do |item| %>
-                  <tr>
-                    <td><%= item.id %></td>
-                  </tr>
-                  <tr>
-                    <td><%= item.name %></td>
-                  </tr>
-                  <tr>
-                    <td><%= item.price  %></td>
-                  </tr>
-                  <tr>
-                    <td><%= item.genre  %></td>
-                  </tr>
-                  <tr>
-                    <td><%= customer.is_deleted %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-        </div>
-      </div>
-    </main>
+
 </body>
