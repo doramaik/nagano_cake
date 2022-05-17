@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :order_details
+
   namespace :admin do
   end
   devise_for :admins
