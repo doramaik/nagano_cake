@@ -1,0 +1,28 @@
+<h1>商品詳細</h1>
+
+<%= image_tag @item.image, size: '100x100' %>
+
+<table class="table table-hover teble-inverse">
+  <tr>
+    <td>商品名</td>
+    <td><%= @item.name %></td>
+  </tr>
+  <tr>
+    <td>商品説明</td>
+    <td><%= @item.text %></td>
+  </tr>
+  <tr>
+    <td>ジャンル</td>
+    <td><%= @item.genre_id %></td>
+  </tr>
+  <tr>
+    <td>税抜き価格</td>
+    <td><%= @item.price %>円</td>
+  </tr>
+  <tr>
+    <td>販売ステータス</td>
+    <td><%= @item.is_active %></td>
+  </tr>
+</table>
+
+<%= link_to edit_admin_path(@item.id), class:"btn btn-lg btn-success" do %>編集する<% end %>
