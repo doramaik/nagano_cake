@@ -4,7 +4,7 @@
           <%= @customer.last_name %>
           <%= @customer.first_name %>さんの会員情報編集</h2>
           
-        <%= form_with model: @customer do |form| %>
+        <%= form_with model: @customer do |f| %>
         
           <div class="form-group row">
             <%= f.label :会員id, class: "col-sm-4" %>
