@@ -1,2 +1,38 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<h2>
+    <strong>
+        <span><%= @customer.last_name %></span>
+        <span><%= @customer.first_name %></span>
+    </strong>さんの
+    <strong>会員詳細</strong>
+</h2>
+
+<div class="row">
+    <dt class="col-sm-3">会員ID</dt>
+    <dd class="col-sm-9"><%= @customer.id %></dd>
+    <dt class="col-sm-3">氏名</dt>
+    <dd class="col-sm-9">
+        <span><%= @customer.last_name %></span>
+        <span><%= @customer.first_name %></span>
+    </dd>
+    <dt class="col-sm-3">フリガナ</dt>
+     <dd class="col-sm-9">
+        <span><%= @customer.last_name_kana %></span>
+        <span><%= @customer.first_name_kana %></span>
+    </dd>
+    <dt class="col-sm-3">郵便番号</dt>
+    <dd class="col-sm-9"> <%= @customer.postal_code %></dd>
+    <dt class="col-sm-3">住所</dt>
+    <dd class="col-sm-9"><%= @customer.address %></dd>
+    <dt class="col-sm-3">電話番号</dt>
+    <dd class="col-sm-9"><%= @customer.phone_number %></dd>
+    <dt class="col-sm-3">メールアドレス</dt>
+    <dd class="col-sm-9"><%= @customer.email %></dd>
+    <dt class="col-sm-3">会員ステータス</dt>
+    <dd class="col-sm-9"><%= @customer.is_deleted, class: "text-success customer_status" %></dd>
+    <dd class="col-sm-4">
+        <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-sm btn-succes edit_admin_customer_#{@customer.id}" %>
+    </dd>
+    <dd class="col-sm-8">
+        <%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-sm btn-info admin_root" %>
+    </dd>
+</div>
