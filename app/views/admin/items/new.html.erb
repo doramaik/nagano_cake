@@ -1,33 +1,37 @@
 <h1>商品新規登録</h1>
 
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item, url: 'admin_items_path', method: :post do |f| %>
 
 <div class="field">
-    <%= form.label :image, "商品画像" %>
+    <%= f.label :image, "商品画像" %>
     <%= f.file_field :image, accept: "image/*" %>
 </div>
 
 <div class="field">
-  <%= form.label :name, "商品名" %>
+  <%= f.label :name, "商品名" %>
   <%= f.file_field :name %>
 </div>
 
 <div class="field">
-  <%= form.label :text %>
-  <%= f.file_area :text %>
+  <%= f.label :text, "商品説明" %>
+  <%= f.text_area :text %>
 </div>
 
 <div class="field">
-  <%= form.label :genre_id, "ジャンル" %>
-  <%= f.collection_select :genre_id, Genres.all, :id, :name, :include_blank => true %>
+  <%= f.label :genre_id, "ジャンル" %>
+  <%= f.collection_select :genre_id, Genres.all, :id, :name, prompt: "--選択してください--" %>
 </div>
 
 <div class="field">
-  <%= form.label :price, "税抜き価格" %>
-  <%= f.file_field :price %>
+  <%= f.label :price, "税抜き価格" %>
+  <%= f.file_field :price %>円
 </div>
 
 <div class="field">
-  <%= form.label :is_active, "販売ステータス" %>
-  <%= f.select :is_active, [['販売中', true], ['販売停止', false]] %>
+  <%= f.label :is_active, "販売ステータス" %>
+  <%= f.select :is_active, [['販売中', true], ['販売停止', false]], prompt: "--選択してください--" %>
 </div>
+
+<%= f.submit '投稿' %>
+
+<% end %>
