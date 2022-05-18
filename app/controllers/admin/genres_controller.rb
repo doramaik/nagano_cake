@@ -9,7 +9,6 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    #特定のジャンル指定
     @genre = Genre.find(params[:id])
   end
   
