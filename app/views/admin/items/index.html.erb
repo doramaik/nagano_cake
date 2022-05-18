@@ -1,23 +1,37 @@
 <body>
-  <div>
     <main>
       <div container>
         <div row>
           <h2>商品一覧</h2>
-            <% @items.each do |item| %>
-              <tr>
-                  <td><%= image_tag get_item_image(50,50) %></td>
-                  <td><%= link_to item.name, root_path %></td>
-                  <td><%= item.text %></td>
-                  <td><%= item.price %></td>
-                  <td><%= item.is_active %></td>
-              </tr>
-            <% end %>
-          <div class = form-group>
-              <%= f.submit 'Create Item', class: "btn btn-sm btn-success" %>
-          </div>
+            <table>
+              <thead>
+                <tr>商品ID</tr>
+                <tr>商品名</tr>
+                <tr>税抜価格</tr>
+                <tr>ジャンル</tr>
+                <tr>ステータス</tr>
+              </thead>
+              <tbody>
+                <% @items.each do |item| %>
+                  <tr>
+                    <td><%= item.id %></td>
+                  </tr>
+                  <tr>
+                    <td><%= item.name %></td>
+                  </tr>
+                  <tr>
+                    <td><%= item.price  %></td>
+                  </tr>
+                  <tr>
+                    <td><%= item.genre  %></td>
+                  </tr>
+                  <tr>
+                    <td><%= item.customer.is_deleted %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
         </div>
-        </div>
+      </div>
     </main>
-  </div>
 </body>
