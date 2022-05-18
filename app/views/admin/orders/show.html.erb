@@ -1,2 +1,23 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="row">
+    <h2 class="col-sm-4">注文履歴詳細</h2>
+
+    <dt class="col-sm-3">購入者</dt>
+    <dd class="col-sm-9">
+        <%= @customer.last_name %><%= @customer.first_name %>
+   </dd>
+    <dt class="col-sm-3">注文日</dt>
+    <dd class="col-sm-9"><%= @order.created_at %></dd>
+    <dt class="col-sm-3">配送先</dt>
+     <dd class="col-sm-9">
+        <p><%= @address.postal_code %> <%= @address.address %></p>
+        <p><%= @address.name %></p>
+    </dd>
+    <dt class="col-sm-3">支払方法</dt>
+    <dd class="col-sm-9"> <%= @order.payment_method %></dd>
+    <dt class="col-sm-3">注文ステータス</dt>
+    <dd class="col-sm-9">
+        <%= f.select :order_status, options_from_collection_for_select(Order.all, :id, :order_status) %>
+
+    </dd>
+    <dd class="col-sm-4">
+</div>
