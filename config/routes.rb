@@ -23,7 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     #商品
     resources :items
     #注文
-    resources :orders 
+    resources :orders
   end
 
   namespace :public do

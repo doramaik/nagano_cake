@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
 
-=begin
+
   def index
     #新規ジャンル作成
     @genre = Genre.new
@@ -14,29 +14,16 @@ class Admin::GenresController < ApplicationController
   def create
     #新規ジャンル作成
     @genre = Genre.new(genre_params)
-    genre.save
-    redirect_to  admin_order_top_path
+    if
+    @genre.save
+     redirect_to request.referer
       flash[:notice] = "You have created new genre successfully."
 
     else
       @genres = Genre.all
-      @genre = Genre.find(params[:id])
-
       render :index
     end
-=end
-
-  def index
-    @genre = Genre.new
-    @genres = Genre.all
   end
-
-  def create
-    @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_to request.referer
-  end
-
 
   def edit
     @genre = Genre.find(params[:id])
