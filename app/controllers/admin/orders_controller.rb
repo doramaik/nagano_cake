@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-  def index
+  def topsss
   end
 
   def show
