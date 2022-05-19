@@ -1,9 +1,9 @@
-
+ <h2 class="mt-3">ジャンル一覧・追加</h2>
 <body>
     <main>
       <div class= container px-5 px-sm-0>
         <div class = row>
-           <h2 class="mt-3">ジャンル一覧・追加</h2>
+          
             <%= form_with model: @genre, url: '/admin/genres',method: :post, local: true do |f| %>
               <div class = "form-group">
                   <label for="genre_name">ジャンル名</label>

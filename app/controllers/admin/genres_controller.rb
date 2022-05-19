@@ -5,10 +5,10 @@ class Admin::GenresController < ApplicationController
     #新規ジャンル作成
     @genre = Genre.new
     #特定のジャンル指定
-
+  
     #ジャンル一覧取り出し
-
     @genres = Genre.all
+
   end
 
   def create
