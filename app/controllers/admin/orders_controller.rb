@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
 
-  def top
+  def index
+    @orders = Order.all
   end
 
   def show
