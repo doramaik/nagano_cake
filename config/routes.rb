@@ -18,7 +18,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     #会員
     resources :customers
     #ジャンル
-    resources :genres
+    resources :genres do
+      post 'genres/index' => 'genres#index'
+    end
     #商品
     resources :items
     #注文
