@@ -24,7 +24,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items
     #注文
     resources :orders
-
   end
 
   namespace :public do
