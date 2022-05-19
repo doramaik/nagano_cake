@@ -10,7 +10,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   # def create
-  #   super
+    # super
   # end
 
   # DELETE /resource/sign_out
@@ -26,7 +26,8 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   protected
-    def after_sign_in_path_for
-      admin_top_path(current_admin)
-    end
+  def after_sign_in_path_for(resource)
+    admin_orders_path
+   end
+
 end
