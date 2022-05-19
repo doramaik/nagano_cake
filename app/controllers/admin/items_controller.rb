@@ -25,7 +25,7 @@ class Admin::ItemsController < ApplicationController
   def edit
     @item = item.find(params[:id])
   end
-  
+
   def update
     @item = item.find(params[:id])
     if @item.update(item_params)
