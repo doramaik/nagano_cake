@@ -1,15 +1,16 @@
 class Admin::CustomersController < ApplicationController
   def index
+    @customers = Customer.all
   end
 
   def show
     @customer = Customer.find(params[:id])
   end
-  
+
   def edit
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
     @customer = customer.with_deleted.find(params[:id])
     if @customer.update(customer_params)
@@ -18,7 +19,7 @@ class Admin::CustomersController < ApplicationController
       render :edit
     end
   end
-  
+
   private
 
   def customer_params
