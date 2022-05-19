@@ -14,7 +14,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
   namespace :admin do
-    root to: "orders#top"
     #会員
     resources :customers
     #ジャンル
@@ -24,9 +23,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     #商品
     resources :items
     #注文
-    resources :orders do
-      get 'top' => 'orders#top'
-    end
+    resources :orders
+    post 'top' => 'orders#top'
+
   end
 
   namespace :public do

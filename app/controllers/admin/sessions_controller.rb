@@ -26,7 +26,7 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   protected
-    def after_sign_in_path_for(resource)
-      admin_order_top_path(current_admin)
+    def after_sign_in_path_for
+      admin_top_path(current_admin)
     end
 end
