@@ -24,7 +24,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items
     #注文
     resources :orders
-    post 'top' => 'orders#top'
 
   end
 
