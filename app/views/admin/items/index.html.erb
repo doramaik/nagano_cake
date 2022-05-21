@@ -1,8 +1,7 @@
-<body>
-    <main>
+<%= button_to "商品追加", {controller: 'items', action: 'new'}, {method: :get} %>
       <div class="container">
+         <h2>商品一覧</h2>
         <div class="row">
-          <h2>商品一覧</h2>
             <table>
               <thead>
                 <tr>商品ID</tr>
@@ -26,12 +25,10 @@
                     <td><%= item.genre  %></td>
                   </tr>
                   <tr>
-                    <td><%= item.customer.is_deleted %></td>
+                    <td><%= item.is_active %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
         </div>
       </div>
-    </main>
-</body>
