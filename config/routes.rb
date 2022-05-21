@@ -8,6 +8,9 @@ devise_for :customers,skip: [:passwords], controllers: {
   sessions: 'public/sessions'
 }
 
+  get "home/about" => 'homes#about'
+
+
   namespace :admin do
     #会員
     resources :customers
@@ -36,11 +39,10 @@ devise_for :customers,skip: [:passwords], controllers: {
     get "orders/thanks", to: 'orders#thanks'
     #home
 
-      get "about" => 'homes#about'
-      get "top"  => 'homes#top'
-
     #会員
-    resources :customers
+    resources :customers do
+      get "customers/quit" => 'customers#quit'
+    end
   end
 
 

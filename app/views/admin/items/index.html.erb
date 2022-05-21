@@ -1,34 +1,29 @@
+
+<div class="container">
+  <h2>商品一覧</h2>
+
+  <table class="table mx-auto">
+    <thead>
+      <tr>
+        <th scope="col-sm-2">商品ID</th>
+        <th scope="col-sm-2">商品名</th>
+        <th scope="col-sm-2">税抜価格</th>
+        <th scope="col-sm-2">ジャンル</th>
+        <th scope="col-sm-2">ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <th scope="row"><%= item.id %></th>
+          <th scope="row"><%= item.name %></th>
+          <th scope="row"><%= item.price %></th>
+          <th scope="row"><%= item.genre.name %></th>
+          <th scope="row"><%= item.is_active ? "販売中" : "販売停止" %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <%= button_to "商品追加", {controller: 'items', action: 'new'}, {method: :get} %>
-      <div class="container">
-         <h2>商品一覧</h2>
-        <div class="row">
-            <table>
-              <thead>
-                <tr>商品ID</tr>
-                <tr>商品名</tr>
-                <tr>税抜価格</tr>
-                <tr>ジャンル</tr>
-                <tr>ステータス</tr>
-              </thead>
-              <tbody>
-                <% @items.each do |item| %>
-                  <tr>
-                    <td><%= item.id %></td>
-                  </tr>
-                  <tr>
-                    <td><%= item.name %></td>
-                  </tr>
-                  <tr>
-                    <td><%= item.price  %></td>
-                  </tr>
-                  <tr>
-                    <td><%= item.genre  %></td>
-                  </tr>
-                  <tr>
-                    <td><%= item.is_active %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-        </div>
-      </div>
