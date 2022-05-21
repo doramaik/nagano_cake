@@ -35,10 +35,10 @@ devise_for :customers,skip: [:passwords], controllers: {
     post "orders/confirm", to: 'orders#confirm'
     get "orders/thanks", to: 'orders#thanks'
     #home
-    resources :homes do
-      get "home/about" => 'homes#about'
-      get "homes/top"  => 'homes#top'
-  end
+
+      get "about" => 'homes#about'
+      get "top"  => 'homes#top'
+
     #会員
     resources :customers
   end
