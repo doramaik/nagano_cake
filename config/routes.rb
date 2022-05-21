@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
-
-# 顧客用
-# URL /customers/sign_in ...
+ root to: 'homes#top'
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
-}
-
-# 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
 }
 
   namespace :admin do
@@ -27,7 +22,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   namespace :public do
-    root to: "homes#top"
+
     #住所
     resources :addresses
     #カート商品
@@ -40,9 +35,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     post "orders/confirm", to: 'orders#confirm'
     get "orders/thanks", to: 'orders#thanks'
     #home
-    resources :homes
-
-    get "home/about" => 'homes#about'
+    resources :homes do
+      get "home/about" => 'homes#about'
+      get "homes/top"  => 'homes#top'
+  end
     #会員
     resources :customers
   end
