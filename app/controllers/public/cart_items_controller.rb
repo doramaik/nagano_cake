@@ -1,11 +1,13 @@
 class Public::CartItemsController < ApplicationController
 
   def index
-    @cart_item = CartItem.all
-
+  # ログインしている会員のカートアイテム
+    @cart_item = current_cart.cart_items
   end
 
   def create
+    
+    
   end
 
   def update
