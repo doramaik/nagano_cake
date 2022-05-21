@@ -38,6 +38,7 @@ devise_for :customers,skip: [:passwords], controllers: {
     post "orders/confirm", to: 'orders#confirm'
     get "orders/thanks", to: 'orders#thanks'
     #home
+
     #会員
     resources :customers do
       get "customers/quit" => 'customers#quit'
