@@ -1,6 +1,6 @@
 <h1>商品新規登録</h1>
 
-<%= form_with model: @item, url: new_admin_item_path do |f| %>
+<%= form_with model: [:admin, @item] do |f| %>
 
 <div class="form-group">
     <%= f.label :image, "商品画像" %>

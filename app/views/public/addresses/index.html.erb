@@ -1,6 +1,6 @@
 <h2>配送先登録/一覧</h2>
 <div class= "conteiner">
-  <%= form_with model: @address,url: 'public/addresses' do |f| %>
+  <%= form_with model: [:public, @address] do |f| %>
     <div class="row mx-auto form-group">
       <dt class="col-sm-3"><%= f.label "郵便番号（ハイフンなし）" %></dt>
       <dd class="col-sm-4"><%= f.text_field :postal_code, class: 'form-control postal_code' %></dd>
