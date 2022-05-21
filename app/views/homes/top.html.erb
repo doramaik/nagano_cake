@@ -14,7 +14,7 @@
         <% @items.each do |item| %>
         <%= link_to public_item_path(item.id) do %>
         <div class="thumbnail product-thumbnail col-xs-2">
-          <div><%= image_tag item.image.variant(resize:'200x200').processed %></div>
+          <div><%= image_tag item.get_image("200x200") %></div>
           <div class="caption">
             <p><%= item.name %></p>
             <p><%= "#{item.price}円" %></p>
