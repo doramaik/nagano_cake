@@ -9,7 +9,7 @@
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧ができますが、<br>
             購入には会員登録が必要になります。<br></th></tr>
-　　　　　　
+
         <tr><th><h3>新着商品</h4></th></tr>
         <% @items.each do |item| %>
         <%= link_to item_path(item.id) do %>
@@ -18,9 +18,6 @@
           <div class="caption">
             <p><%= item.name %></p>
             <p><%= "#{item.price}円" %></p>
-            <% if item.sales_status == false %>
-            <p class="product-sales-status">売り切れ</p>
-            <% end %>
           </div>
         </div>
         <% end %>

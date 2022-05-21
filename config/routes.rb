@@ -40,7 +40,9 @@ devise_for :customers,skip: [:passwords], controllers: {
       get "homes/top"  => 'homes#top'
   end
     #会員
-    resources :customers
+    resources :customers do
+      get "customers/quit" => 'customers#quit'
+    end
   end
 
 
