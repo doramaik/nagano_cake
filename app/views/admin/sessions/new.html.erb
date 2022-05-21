@@ -5,7 +5,7 @@
     </div>
   </div>
 
-<%= form_with model: @admin, url: admin_session_path do |f| %>
+<%= form_with model: [:admin, @admin], url: admin_session_path do |f| %>
 
   <div class="field">
     <%= f.label :email, "メールアドレス" %><br />
