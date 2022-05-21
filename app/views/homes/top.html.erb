@@ -12,9 +12,9 @@
 
         <tr><th><h3>新着商品</h4></th></tr>
         <% @items.each do |item| %>
-        <%= link_to item_path(item.id) do %>
+        <%= link_to public_item_path(item.id) do %>
         <div class="thumbnail product-thumbnail col-xs-2">
-          <%= attachment_image_tag item, :image, :size => '300x300' %>
+          <%= image_tag item.get_image %>
           <div class="caption">
             <p><%= item.name %></p>
             <p><%= "#{item.price}円" %></p>
