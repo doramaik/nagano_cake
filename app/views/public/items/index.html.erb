@@ -1,26 +1,24 @@
 <body>
   <div>
     <main role ="main">
-          <h2>商品一覧</h2>
-          <div class="album py-5 bg-light">
-            <div calass="container">
-              <div class="row">
-                <% @items.each do |item| %>
-                  <div class="col-md-2">
-                    <%= image_tag item.get_image("100x100") %>
-                    <div class="body">
-                      <p><%= link_to item.name, root_path %></p>
-                      <p><%= item.text %></p>
-                      <p><%= item.price %></p>
-                      <p><%= item.is_active ? "販売中" : "販売停止中" %></p>
-                    </div>
-                  </div>
-                <% end %>
+      <h2>商品一覧</h2>
+      <div class="album py-5 bg-light">
+        <div calass="container">
+          <div class="row">
+            <% @items.each do |item| %>
+              <div class="col-md-2">
+                <%= image_tag item.get_image("100x100") %>
+                <div class="body">
+                  <p><%= link_to item.name, public_item_path(item) %></p>
+                  <p><%= item.text %></p>
+                  <p><%= item.price %></p>
+                  <p><%= item.is_active ? "販売中" : "販売停止中" %></p>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
-
-
+        </div>
+      </div>
     </main>
   </div>
 </body>
