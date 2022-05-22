@@ -11,6 +11,17 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
+  end
+
+  def update
+    address = Address.find(params[:id])
+    if address.update(address_params)
+      redirect_to public_addresses_path
+    else
+      @shipping_address = ShippingAddress.find(params[:id])
+      render "customers/addresses/edit"
+    end
   end
 
   private

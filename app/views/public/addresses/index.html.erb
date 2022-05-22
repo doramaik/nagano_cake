@@ -38,7 +38,7 @@
             <%= link_to '編集する', edit_public_address_path(address), class: "btn btn-sm btn-success edit_address_#{address.id}" %>
             </td>
           <td>
-            <%= link_to '削除する', address, method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-danger destroy_address_#{address.id}" %>
+            <%= link_to '削除する', public , method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-danger destroy_address_#{address.id}" %>
           </td>
         </tr>
       <% end %>
