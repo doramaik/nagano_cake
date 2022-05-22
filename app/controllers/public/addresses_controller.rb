@@ -24,6 +24,9 @@ class Public::AddressesController < ApplicationController
       render "customers/addresses/edit"
     end
   end
+  
+  def destrouy
+  end
 
   private
 
