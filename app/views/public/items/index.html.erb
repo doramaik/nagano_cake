@@ -1,23 +1,24 @@
 <body>
   <div>
-    <main>
-      <div container>
-        <div row>
-          <h2>商品一覧</h2>
+    <main role ="main">
+      <h2>商品一覧</h2>
+      <div class="album py-5 bg-light">
+        <div calass="container">
+          <div class="row">
             <% @items.each do |item| %>
-              <tr>
-                  <td><%= image_tag get_image(50,50) %></td>
-                  <td><%= link_to item.name, root_path %></td>
-                  <td><%= item.text %></td>
-                  <td><%= item.price %></td>
-                  <td><%= item.is_active %></td>
-              </tr>
+              <div class="col-md-2">
+                <%= image_tag item.get_image("100x100") %>
+                <div class="body">
+                  <p><%= link_to item.name, public_item_path(item) %></p>
+                  <p><%= item.text %></p>
+                  <p><%= item.price %></p>
+                  <p><%= item.is_active ? "販売中" : "販売停止中" %></p>
+                </div>
+              </div>
             <% end %>
-          <div class = form-group>
-              <%= f.submit 'Create Item', class: "btn btn-sm btn-success" %>
           </div>
         </div>
-        </div>
+      </div>
     </main>
   </div>
 </body>

@@ -7,7 +7,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-
+  #home
   get "home/about" => 'homes#about'
 
 
@@ -15,9 +15,9 @@ devise_for :customers,skip: [:passwords], controllers: {
     #会員
     resources :customers
     #ジャンル
-    resources :genres do
-      post 'genres/index' => 'genres#index'
-    end
+    resources :genres
+    post 'genres/index' => 'genres#index'
+
     #商品
     resources :items
     #注文
@@ -37,12 +37,13 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :orders
     post "orders/confirm", to: 'orders#confirm'
     get "orders/thanks", to: 'orders#thanks'
-    #home
+
 
     #会員
-    resources :customers do
-      get "customers/quit" => 'customers#quit'
-    end
+    resources :customers , only: [:show, :edit, :update]
+    get "customers/:id/quit" => 'customers#quit'
+    patch "customers/withdraw" => 'customers#withdraw'
+
   end
 
 
