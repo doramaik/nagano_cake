@@ -19,29 +19,32 @@
   <% end %>
 
 
-  <table class="row mx-auto table">
-    <thead class="col-sm-10">
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">郵便</th>
+      <th scope="col">住所</th>
+      <th scope="col">宛名</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @addresses.each do |address| %>
       <tr>
-        <td>郵便</td>
-        <td>住所</td>
-        <td>宛名</td>
-        <td colspan="2"></td>
-        </tr>
-    </thead>
-    <tbody>
-      <% @addresses.each do |address| %>
-        <tr>
-          <td><%= address.postal_code %></td>
-          <td><%= address.address %></td>
-          <td><%= address.name %></td>
-          <td>
-            <%= link_to '編集する', edit_public_address_path(address), class: "btn btn-sm btn-success edit_address_#{address.id}" %>
-            </td>
-          <td>
-            <%= link_to '削除する', address, method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-danger destroy_address_#{address.id}" %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <th scope="row"></th>
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+        <td><%= link_to '編集する', edit_public_address_path(address), class: "btn btn-sm btn-success edit_address_#{address.id}" %></td>
+        <td><%= link_to '削除する', public_address_path(address), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-sm btn-danger destroy_address_#{address.id}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 </div>
+
+
+
