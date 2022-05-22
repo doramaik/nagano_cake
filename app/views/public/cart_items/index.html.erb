@@ -1,21 +1,27 @@
 <h1>ショッピングカート</h1>
-
+<%= link_to public_cart_items_destroy_all_path, class: "btn btn-danger btn-sm" do %>カートを空にする<% end %>
 <table>
   <thead>
       <th>商品名</th>
       <th>単価(税込)</th>
       <th>個数</th>
       <th>小計</th>
+      <th></th>
   </thead>
   <tbody>
-  <% @cart_item.each do |cart_item| %>
+  <% @cart_items.each do |cart_item| %>
       <tr>
           <td><%= cart_item.itme.name %></td>
-          <td><%= cart_item.item.with_tax_price%></td>
+          <td><%= cart_item.item.with_tax_price %></td>
           <td><%= cart_item.item.count %></td>
-          <td><%= cart_item.subtotal%></td>
-          <% @合計金額 +=  (cart_item.price * 1.1).floor * cart_item.amount %>
+          <td><%= cart_item.subtotal %></td>
+          <td><%= link_to public_item_path(@cart_item.item_id), method: :delete, class: "btn btn-danger" do %>削除する<% end %></td>
+          <!--@totalに小計をeach文で繰り返し入れていく-->
+          <% @total +=  cart_item.subtotal %>
       </tr>
   <% end %>
   </tbody>
 </table>
+<%= link_to  root_path, class:"btn btn-primary btn-sm" do %>買い物を続ける<% end %>
+<div>商品合計<%= @total %></div>
+<%= link_to new_public_order_path(@cart_items), class: "btn btn-success btn" do %>情報入力へ進む<% end %>
