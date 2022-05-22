@@ -6,6 +6,14 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  def self.search_for(content, method)
+    if method == "partial"
+       Item.where('name LIKE ?', '%'+content+'%')
+    else
+      @items = Item.all
+    end
+  end
+
 
   # def get_image(width, height)
   #   unless image.attached?
