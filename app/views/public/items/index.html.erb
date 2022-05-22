@@ -6,7 +6,7 @@
           <h2>商品一覧</h2>
             <% @items.each do |item| %>
               <tr>
-                  <td><%= image_tag get_item_image(50,50) %></td>
+                  <td><%= image_tag get_image(50,50) %></td>
                   <td><%= link_to item.name, root_path %></td>
                   <td><%= item.text %></td>
                   <td><%= item.price %></td>
