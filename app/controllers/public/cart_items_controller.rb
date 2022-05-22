@@ -6,8 +6,14 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    
-    
+     @cart_item = CartItem.new(cart_item_params)
+     @cart_item.customer_id = current_customer.id
+    if @cart_item.save
+      redirect_to public_items_path,notice: "ありがとうございます。"
+    else
+      @item = Item.find(params[:cart_item][:item_id])
+      render "public/items/show"
+    end
   end
 
   def update
