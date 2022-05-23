@@ -16,6 +16,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find_by(item_id: @update_cart_item.item_id, customer_id: current_customer.id)
      # カート商品に同じモノがありますか？
       if @cart_item.present?
+
        # カート商品は(カート商品+追加商品)　個数のみを足す
        @cart_item.amount += @update_cart_item.amount
        # 個数のみを保存
