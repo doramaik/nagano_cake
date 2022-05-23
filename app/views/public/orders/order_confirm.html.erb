@@ -15,7 +15,7 @@
               <tr>
                 <td><%= cart_item.item.name %></td>
                 <td><%= (cart_item.item.price * 1.1).to_i%></td>
-                <td><%= cart_item.count %></td>
+                <td><%= cart_item.amount %></td>
                 <td><%= (Item.find(cart_item.item_id).price * 1.1 * cart_item.count).to_i  %>
                 </td>
               </tr>
@@ -26,7 +26,7 @@
           <tbody>
             <tr>
               <th scope="row">支払い方法</th>
-              <td><%= @order.payment_method %></td>
+              <td><%= @order.payment_method_i18n  %></td>
             </tr>
             <tr>
               <th scope="row">お届け先</th>
@@ -60,8 +60,16 @@
     </div>
     <div class="row">
       <div class="col-xs-offset-5">
-        <%#= form_with(model: @order, url:public_orders_confirm_path, method: :post, local: true) do |f| %>
-              <%#= f.submit "注文を確定する",class:"btn btn-primary col-xs-12" %>
-        <%# end %>
+
+
+        <%= form_with(model: @order, url:public_orders_path, method: :post, local: true) do |f| %>
+              <%= f.hidden_field :postal_code,:value => @order.postal_code %>
+              <%= f.hidden_field :shipping_address,:value => @order.shipping_address %>
+              <%= f.hidden_field :shipping_name,:value => @order.shipping_name %>
+              <%= f.hidden_field :payment_method,:value => @order.payment_method %>
+              <%= f.hidden_field :amount_billed,:value => @sum %>
+              <%= f.hidden_field :shipping_fee,:value => @order.shipping_fee %>
+              <%= f.submit "注文を確定する",class:"btn btn-primary col-xs-12" %>
+        <% end %>
       </div>
     </div>
