@@ -16,7 +16,11 @@
       <% @items.each do |item| %>
         <tr>
           <th scope="row"><%= item.id %></th>
-          <th scope="row"><%= item.name %></th>
+          <th scope="row">
+            <%= link_to admin_item_path(item) do %>
+             <%= item.name %>
+            <% end %>
+          </th>
           <th scope="row"><%= item.price %></th>
           <th scope="row"><%= item.genre.name %></th>
           <th scope="row"><%= item.is_active ? "販売中" : "販売停止" %></th>
@@ -25,5 +29,7 @@
     </tbody>
   </table>
 </div>
+
+<%= paginate @items %>
 
 <%= button_to "商品追加", {controller: 'items', action: 'new'}, {method: :get} %>

@@ -24,9 +24,13 @@ class Public::AddressesController < ApplicationController
       render "customers/addresses/edit"
     end
   end
-  
-  def destrouy
+
+  def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    redirect_to request.referer
   end
+
 
   private
 

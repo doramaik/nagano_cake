@@ -30,7 +30,9 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :addresses
     #カート商品
     resources :cart_items
-    delete "cart_items", to: 'cart_items#destroy_all'
+    delete "cart_items/destroy_all", to: 'cart_items#destroy_all'
+
+
     #商品
     resources :items
     #注文
@@ -43,6 +45,9 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :customers , only: [:show, :edit, :update]
     get "customers/:id/quit" => 'customers#quit'
     patch "customers/:id/quit" => 'customers#withdraw'
+
+    #検索
+    get "search" => "searches#search"
 
   end
 
