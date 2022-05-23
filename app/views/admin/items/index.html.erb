@@ -16,7 +16,9 @@
       <% @items.each do |item| %>
         <tr>
           <th scope="row"><%= item.id %></th>
-          <th scope="row"><%= item.name %></th>
+          <%= link_to public_item_path(item.id) do %>
+            <%= item.name %>
+          <% end %>
           <th scope="row"><%= item.price %></th>
           <th scope="row"><%= item.genre.name %></th>
           <th scope="row"><%= item.is_active ? "販売中" : "販売停止" %></th>
