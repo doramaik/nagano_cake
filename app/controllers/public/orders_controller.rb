@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     # 3. データをデータベースに保存するためのsaveメソッド実行
     order.save
     # 4. トップ画面へリダイレクト
-    redirect_to public_orders_path
+    redirect_to public_orders_confirm_path
   end
 
 

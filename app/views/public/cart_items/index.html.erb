@@ -9,19 +9,14 @@
       <th></th>
   </thead>
   <tbody>
-  <% @cart_items.each do |cart_item| %>
-      <tr>
-          <td><%= cart_item.itme.name %></td>
-          <td><%= cart_item.item.with_tax_price %></td>
-          <td><%= cart_item.item.count %></td>
-          <td><%= cart_item.subtotal %></td>
+
           <td><%= link_to public_item_path(@cart_item.item_id), method: :delete, class: "btn btn-danger" do %>削除する<% end %></td>
           <!--@totalに小計をeach文で繰り返し入れていく-->
           <% @total +=  cart_item.subtotal %>
-      </tr>
-  <% end %>
+
+
   </tbody>
 </table>
-<%= link_to  root_path, class:"btn btn-primary btn-sm" do %>買い物を続ける<% end %>
+<%= link_to  root_path, class: "btn btn-primary btn-sm" do %>買い物を続ける<% end %>
 <div>商品合計<%= @total %></div>
 <%= link_to new_public_order_path(@cart_items), class: "btn btn-success btn" do %>情報入力へ進む<% end %>

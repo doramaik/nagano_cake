@@ -8,21 +8,17 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item =　current_customer.cart_items.new(cart_item_params)
-    # 商品が重複しないようにする　@update_cart_itemは追加しようとしている商品　find_byでカート内に同じモノが存在かを確認
-    @update_cart_item = CartItem.find_by(item_id: @cart_item.item_id)
-    # 追加した商品はカート商品と同じ？
-      if @update_cart_item.present?
-       # カート商品は(カート商品+追加商品)　個数のみを足す
-       @cart_item.count += @update_cart_item.count
-       # 個数のみを保存
-       @cart_item.update(count: @cart_item.count)
-       redirect_to request.referer
-      else
-       # カート内に同じ商品がなければ新しい商品として保存
-       @cart_item.save
-       redirect_to request.referer
-      end
+    cart_item = current_customer.cart_items.new(cart_params)                                                                   #新しく客がカートに登録した商品をcart_itemとする。
+     if current_customer.cart_items.exists?(item_id: cart_item.item_id)                                                         #もし、cart_itemのitem_idが、客のカート内のcart_itemsテーブル内に存在していたら
+        add_items = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])                                  #客のcart_itemsテーブル内から、特定の[:cart_item][:item_id]であるものを選んで add_itemsという名前で保存
+        add_items.count+= params[:cart_item][:count].to_i                                                                # add_itemsのquantity
+        add_items.save
+        redirect_to  public_cart_items_path
+     else
+       cart_item = CartItem.new(cart_params)
+       cart_item.save
+       redirect_to  cart_items_path
+     end
   end
 
   def update
@@ -48,7 +44,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   private
-  def cart_item_params
+  def cart_params
       params.require(:cart_item).permit(:item_id, :count)
   end
 

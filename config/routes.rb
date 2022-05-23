@@ -34,8 +34,9 @@ devise_for :customers,skip: [:passwords], controllers: {
     #商品
     resources :items
     #注文
-    resources :orders
     post "orders/confirm", to: 'orders#confirm'
+    resources :orders
+    
     get "orders/thanks", to: 'orders#thanks'
 
 

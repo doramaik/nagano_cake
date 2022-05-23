@@ -7,9 +7,10 @@ class Admin::GenresController < ApplicationController
     #特定のジャンル指定
 
     #ジャンル一覧取り出し
-    @genres = Genre.all
-
+    @genres = Genre.page(params[:page])
   end
+
+
 
   def create
     #新規ジャンル作成

@@ -30,4 +30,7 @@
   </table>
 </div>
 
+<%= paginate @items %>
 <%= button_to "商品追加", {controller: 'items', action: 'new'}, {method: :get} %>
+
+
