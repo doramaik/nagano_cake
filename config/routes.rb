@@ -29,9 +29,8 @@ devise_for :customers,skip: [:passwords], controllers: {
     #住所
     resources :addresses
     #カート商品
-    resources :cart_items
     delete "cart_items/destroy_all", to: 'cart_items#destroy_all'
-
+    resources :cart_items
 
     #商品
     resources :items
