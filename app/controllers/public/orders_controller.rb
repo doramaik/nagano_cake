@@ -35,6 +35,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @addresss.postal_code
       @order.shipping_name = @addresss.name
     end
+    
     @order_details = @order.order_details.all
     # 商品合計を出すため
     @sum = 0
