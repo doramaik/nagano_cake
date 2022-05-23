@@ -11,7 +11,7 @@ class Public::CartItemsController < ApplicationController
 
   def create
     # byebug
-     @cart_item =　current_customer.cart_items.new(cart_item_params)
+     @cart_item = current_customer.cart_items.new(cart_item_params)
     #  @cart_item = CartItem.new(cart_item_params)
     #   @cart_item.customer_id = current_customer.id
     # 商品が重複しないようにする　@update_cart_itemは追加しようとしている商品　find_byでカート内に同じモノが存在かを確認
