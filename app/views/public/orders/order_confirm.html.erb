@@ -16,7 +16,7 @@
                 <td><%= cart_item.item.name %></td>
                 <td><%= (cart_item.item.price * 1.1).to_i%></td>
                 <td><%= cart_item.amount %></td>
-                <td><%= (Item.find(cart_item.item_id).price * 1.1 * cart_item.count).to_i  %>
+                <td><%= (Item.find(cart_item.item_id).price * 1.1 * cart_item.amount).to_i  %>
                 </td>
               </tr>
             <% end %>
