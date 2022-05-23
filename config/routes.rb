@@ -36,8 +36,7 @@ devise_for :customers,skip: [:passwords], controllers: {
     #商品
     resources :items
     #注文
-    post "orders/confirm", to: 'orders#confirm'
-    get "orders_order_confirm", to: 'orders#order_confirm'
+    post "orders_order_confirm", to: 'orders#order_confirm'
     get "orders/thanks", to: 'orders#thanks'
     resources :orders , only: [:show, :new, :create, :index]
     #会員
