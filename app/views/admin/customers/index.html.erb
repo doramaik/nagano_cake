@@ -22,7 +22,7 @@
           <% end %>
         </th>
         <th scope="row"><%= customer.email %></th>
-        <th scope="row"><%= customer.is_deleted ? "有効" : "退会" %></th>
+        <th scope="row"><%= customer.is_deleted ? "退会" : "有効" %></th>
         </tr>
       <% end %>
     </tbody>

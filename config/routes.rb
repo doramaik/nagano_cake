@@ -44,7 +44,7 @@ devise_for :customers,skip: [:passwords], controllers: {
     #会員
     resources :customers , only: [:show, :edit, :update]
     get "customers/:id/quit" => 'customers#quit'
-    patch "customers/withdraw" => 'customers#withdraw'
+    patch "customers/:id/quit" => 'customers#withdraw'
 
     #検索
     get "search" => "searches#search"
