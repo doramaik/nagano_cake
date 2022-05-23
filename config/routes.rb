@@ -31,6 +31,8 @@ devise_for :customers,skip: [:passwords], controllers: {
     #カート商品
     resources :cart_items
     delete "cart_items/destroy_all", to: 'cart_items#destroy_all'
+
+
     #商品
     resources :items
     #注文

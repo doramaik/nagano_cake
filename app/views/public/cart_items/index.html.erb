@@ -11,11 +11,11 @@
   <tbody>
   <% @cart_items.each do |cart_item| %>
       <tr>
-          <td><%= cart_item.itme.name %></td>
+          <td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.with_tax_price %></td>
-          <td><%= cart_item.item.count %></td>
+          <td><%#= cart_item.item.amount %></td>
           <td><%= cart_item.subtotal %></td>
-          <td><%= link_to public_item_path(@cart_item.item_id), method: :delete, class: "btn btn-danger" do %>削除する<% end %></td>
+          <td><%= link_to public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>削除する<% end %></td>
           <!--@totalに小計をeach文で繰り返し入れていく-->
           <% @total +=  cart_item.subtotal %>
       </tr>
