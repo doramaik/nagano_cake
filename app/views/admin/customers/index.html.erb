@@ -16,16 +16,19 @@
         <tr>
         <th scope="row"><%= customer.id %></th>
         <th scope="row">
-          <% link_to admin_customer_path(customer) do %>
-          <%= customer.last_name %>
-          <%= customer.first_name %>
+          <%= link_to admin_customer_path(customer) do %>
+            <%= customer.last_name %>
+            <%= customer.first_name %>
           <% end %>
         </th>
         <th scope="row"><%= customer.email %></th>
-        <th scope="row"><%= customer.is_deleted ? "有効" : "退会" %></th>
+        <th scope="row"><%= customer.is_deleted ? "退会" : "有効" %></th>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+
+<%= paginate @customers %>
+
 
