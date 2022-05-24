@@ -15,7 +15,7 @@ class Admin::OrdersController < ApplicationController
     # @subtotals.each do |a|
     #   @sum = @sum+a
     # end
-    @subtotals = @order_details.map { |order_detail| order_detail.once_price * order_detail.quantity }
+    @subtotals = @order_details.map { |order_detail| order_detail.price }
     @sum = @subtotals.sum
 
   end
