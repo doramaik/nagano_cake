@@ -16,7 +16,7 @@
                 <td><%= cart_item.item.name %></td>
                 <td><%= (cart_item.item.price * 1.1).to_i%></td>
                 <td><%= cart_item.count %></td>
-                <td><%= (Item.find(cart_item.item_id).price * 1.1 * cart_item.count).to_i  %>
+                <td><%= (Item.find(cart_item.item_id).price * 1.1 * cart_item.amount).to_i  %>
                 </td>
               </tr>
             <% end %>
@@ -60,8 +60,8 @@
     </div>
     <div class="row">
       <div class="col-xs-offset-5">
-        <%#= form_with(model: @order, url:public_orders_confirm_path, method: :post, local: true) do |f| %>
-              <%#= f.submit "注文を確定する",class:"btn btn-primary col-xs-12" %>
-        <%# end %>
+        <%= form_with(model: @order, url:public_orders_confirm_path, method: :post, local: true) do |f| %>
+              <%= f.submit "注文を確定する",class:"btn btn-primary col-xs-12" %>
+        <% end %>
       </div>
     </div>
