@@ -1,37 +1,36 @@
-
-<div class="container">
-  <h2>商品一覧</h2>
-
-  <table class="table mx-auto">
-    <thead>
-      <tr>
-        <th scope="col-sm-2">商品ID</th>
-        <th scope="col-sm-2">商品名</th>
-        <th scope="col-sm-2">税抜価格</th>
-        <th scope="col-sm-2">ジャンル</th>
-        <th scope="col-sm-2">ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
-        <tr>
-          <th scope="row"><%= item.id %></th>
-
-          <th scope="row">
-            <%= link_to admin_item_path(item) do %>
-             <%= item.name %>
-            <% end %>
-          </th>
-
-          <th scope="row"><%= item.price %></th>
-          <th scope="row"><%= item.genre.name %></th>
-          <th scope="row"><%= item.is_active ? "販売中" : "販売停止" %></th>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class = "container">
+    <div class = "col-sm-10 px-sm-0 mx-auto">
+      <h4 class = "mb-5">商品一覧</h4>
+      
+      <table class="table my-5 mx-auto">
+        <thead class = "table-secondary">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <th><%= item.id %></th>
+              <th>
+                <%= link_to admin_item_path(item) do %>
+                 <%= item.name %>
+                <% end %>
+              </th>
+              <th><%= item.price %></th>
+              <th><%= item.genre.name %></th>
+              <th><%= item.is_active ? "販売中" : "販売停止" %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <%= paginate @items %>
+      
+      <%= link_to "商品追加", {controller: 'items', action: 'new'}, {method: :get, class: "btn btn-sm btn-success add_items px-3" } %>
+    </div>
 </div>
-
-<%= paginate @items %>
-
-<%= button_to "商品追加", {controller: 'items', action: 'new'}, {method: :get} %>
