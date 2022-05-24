@@ -1,2 +1,23 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+
+<h5>注文情報</h5>
+<table>
+  <tr>
+    <td>注文日</td>
+    <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+  </tr>
+  <tr>
+    <td>配送先</td>
+    <dd>〒<%= @oeder.postal_code %></dd>
+    <dd><%= @order.shipping_address %></dd>
+    <dd><%= @order.shipping_name %></dd>
+  </tr>
+  <tr>
+    <td>支払方法</td>
+    <td><%= @odrer.payment_method %></td>
+  </tr>
+  <tr>
+    <td>ステータス</td>
+    <td><%= @odrer.item.order_status %></td>
+  </tr>
+</table>
