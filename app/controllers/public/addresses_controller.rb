@@ -6,9 +6,10 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    @address.customer_id = current_customer.1id
+    @address.customer_id = current_customer.id
     @address.save
     redirect_to request.referer
+    flash[:notice] = "配送先を登録しました"
   end
 
   def edit

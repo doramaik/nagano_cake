@@ -11,15 +11,20 @@
             </tr>
           </thead>
           <tbody>
-            <% @cart_item.each do |cart_item| %>
+            <!--@totalを0と定義-->
+            <% @total = 0 %>
+            <% @cart_items.each do |cart_item| %>
               <tr>
                 <td><%= cart_item.item.name %></td>
-                <td><%= (cart_item.item.price * 1.1).to_i%></td>
+                <td><%= cart_item.item.with_tax_price %></td>
                 <td><%= cart_item.amount %></td>
-                <td><%= (Item.find(cart_item.item_id).price * 1.1 * cart_item.amount).to_i  %>
+                <td><%= cart_item.subtotal %>
                 </td>
               </tr>
+                <!--@totalに小計をeach文で繰り返し入れていく-->
+            <% @total += cart_item.subtotal %>
             <% end %>
+
           </tbody>
         </table>
         <table class="table" style="margin-top: 50px;">
@@ -48,11 +53,11 @@
             </tr>
             <tr>
               <td class="active">商品合計</td>
-              <td><%= @sum %></td>
+              <td><%= @total %></td>
             </tr>
             <tr>
               <td class="active">請求金額</td>
-              <td><%= @sum + @order.shipping_fee %></td>
+              <td><%= @total + @order.shipping_fee %></td>
             </tr>
           </tbody>
         </table>
