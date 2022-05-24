@@ -21,16 +21,8 @@
           <% end %>
         </th>
         <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-        <td><%= order.order_details.sum(:amount) %></td>
-        <td><%= case order.order_status when "入金待ち" %>
-        <span><%= order.order_status %></span>
-        <% when "発送待ち" %>
-        <span><%= order.order_status %></span>
-        <% when "発送済み" %>
-        <span><%= order.order_status %></span>
-
-        <% end %>
-        </td>
+        <td><%= order.order_details.count %></td>
+        <td><%= order.order_status_i18n %></td>
       </tr>
       <% end %>
     </tbody>
