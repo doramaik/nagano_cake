@@ -1,66 +1,67 @@
 <div class='container'>
-    <div class="row">
-        <h2 class="col-sm-2">注文履歴詳細</h2>
-    
-        <dt class="col-sm-1">購入者</dt>
-        <dd class="col-sm-7">
-            <%= @customer.last_name %><%= @customer.first_name %>
-        </dd>
-        <dt class="col-sm-1">注文日</dt>
-        <dd class="col-sm-7"><%= @order.created_at %></dd>
-        <dt class="col-sm-1">配送先</dt>
-        <dd class="col-sm-7">
-            <p><%= @address.postal_code %> <%= @address.address %></p>
-            <p><%= @address.name %></p>
-        </dd>
-        <dt class="col-sm-1">支払方法</dt>
-        <dd class="col-sm-7"> <%= @order.payment_method %></dd>
-        <dt class="col-sm-1">注文ステータス</dt>
-        <dd class="col-sm-7">
-            <%= form_with model: @order, url: admins_orders_order_status_path, method: :patch, local: true do |f| %>
-                <%= f.select :order_status, Order.order_statuses.keys.to_a, {} %>
-                <%= f.hidden_field :id, :value => @order.id %>
-                <%= f.submit"更新", class: "btn btn-success" %>
-            <% end %>
-        </dd>
-    
-    
-        <table class="table">
-            <thead class="table-light">
-                <tr>
-                    <th>商品名</th>
-                    <th>単価（税込）</th>
-                    <th>数量</th>
-                    <th>小計</th>
-                    <th>製作ステータス</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @order_details.each do |order_detail| %>
-                    <tr>
-                        <td><%= order_detail.item.name %></td>
-                        <td><%= order_detail.item.with_tax_price %></td>
-                        <td><%= order_detail.count %></td>
-                        <td><%= order_detail.cart_item.subtotal %></td>
-                        <td>
-                            <%= form_with model: order_detail , url: admins_order_details_production_status_path, method: :patch, local: true do |f| %>
-                                <%= f.select :production_status, OrderDetail.production_status.keys.to_a, {} %>
-                                <%= f.hidden_field :id, :value => order_detail.id %>
-                                <%= f.submit"更新", class: "btn btn-success" %>
-                            <% end %>
-                        </td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-    
-        <div class="col-xs-8"style="margin-top: 120px;">
-            <dt class="col-sm-8">商品合計</dt>
-            <dd class="col-sm-12"><%= @sum %></dd>
-            <dt class="col-sm-8">送料</dt>
-            <dd class="col-sm-12"><%= @order.shipping_fee %></dd>
-            <dt class="col-sm-8">請求金額合計</dt>
-            <dd class="col-sm-12"><%= @sum + @order.shipping_fee %></dd>
-        </div>
-    </div>
+    <h2>注文履歴詳細</h2>
+<div class="row-12">
+
+
+<dt>購入者</dt>
+<dd>
+<%= @order.customer.last_name %><%= @order.customer.first_name %>
+</dd>
+<dt>注文日</dt>
+<dd><%= @order.created_at %></dd>
+<dt>配送先</dt>
+<dd>
+<p><%= @order.postal_code %> <%= @order.shipping_address %></p>
+<p><%= @order.shipping_name %></p>
+</dd>
+<dt>支払方法</dt>
+<dd> <%= @order.payment_method_i18n %></dd>
+<dt>注文ステータス</dt>
+<dd>
+<%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
+<%= f.select :order_status, Order.order_statuses.keys.to_a, {} %>
+<%= f.hidden_field :id, :value => @order.id %>
+<%= f.submit"更新", class: "btn btn-success" %>
+<% end %>
+</dd>
+
+
+<table class="table">
+<thead class="table-light">
+<tr>
+<th>商品名</th>
+<th>単価（税込）</th>
+<th>数量</th>
+<th>小計</th>
+<th>製作ステータス</th>
+</tr>
+</thead>
+<tbody>
+<% @order_details.each do |order_detail| %>
+<tr>
+<td><%= order_detail.item.name %></td>
+<td><%= order_detail.item.with_tax_price %></td>
+<td><%= order_detail.amount %></td>
+<td><%= order_detail.cart_item.subtotal %></td>
+<td>
+<%= form_with model: order_detail, url: admin_order_detail_path(order_detail), method: :patch, local: true do |f| %>
+<%= f.select :production_status, OrderDetail.production_status_i18n.keys.to_a, {} %>
+<%= f.hidden_field :id, :value => order_detail.id %>
+<%= f.submit"更新", class: "btn btn-success" %>
+<% end %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<div class="col-xs-8"style="margin-top: 120px;">
+<dt class="col-sm-8">商品合計</dt>
+<dd class="col-sm-12"><%= @sum %></dd>
+<dt class="col-sm-8">送料</dt>
+<dd class="col-sm-12"><%= @order.shipping_fee %></dd>
+<dt class="col-sm-8">請求金額合計</dt>
+<dd class="col-sm-12"><%= @sum + @order.shipping_fee %></dd>
+</div>
+</div>
 </div>

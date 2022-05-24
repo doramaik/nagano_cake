@@ -22,6 +22,8 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :items
     #注文
     resources :orders
+
+    resources :order_details
   end
 
   namespace :public do
