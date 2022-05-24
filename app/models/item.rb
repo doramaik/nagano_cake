@@ -6,6 +6,12 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  validates :text, presence: true
+  validates :name, presence: true
+  validates :price, presence: true
+
+
+
   def self.search_for(content, method)
     if method == "partial"
        Item.where('name LIKE ?', '%'+content+'%')

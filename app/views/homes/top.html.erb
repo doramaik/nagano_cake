@@ -11,7 +11,8 @@
             購入には会員登録が必要になります。<br></th></tr>
 
         <tr><th><h3>新着商品</h4></th></tr>
-        <% @items.each do |item| %>
+        
+        </tr><% @items.each do |item| %>
         <%= link_to public_item_path(item.id) do %>
         <div class="thumbnail product-thumbnail col-xs-2">
           <div><%= image_tag item.get_image("200x200") %></div>

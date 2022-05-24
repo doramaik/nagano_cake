@@ -51,16 +51,6 @@
                   マイページ
                   <% end %>
                 </li>
-                 <li>
-                  <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                  ログアウト
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to  home_about_path, class: 'nav-link text-dark' do %>
-                  About
-                  <% end %>
-                </li>
                 <li>
                   <%= link_to  public_items_path, class: 'nav-link text-dark' do %>
                   商品一覧
@@ -71,9 +61,24 @@
                   カート
                   <% end %>
                 </li>
+                 <li>
+                  <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                  ログアウト
+                  <% end %>
+                </li>
             </ul>
             <% else %>
                 <ul class="navbar-nav ml-auto">
+                  <li>
+                  <%= link_to  home_about_path, class: 'nav-link text-dark' do %>
+                  About
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to  public_items_path, class: 'nav-link text-dark' do %>
+                  商品一覧
+                  <% end %>
+                </li>
                  <li>
                   <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
                   新規登録
@@ -82,16 +87,6 @@
                  <li>
                   <%= link_to customer_session_path, class: 'nav-link text-dark' do %>
                   ログイン
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to  home_about_path, class: 'nav-link text-dark' do %>
-                  About
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to  public_items_path, class: 'nav-link text-dark' do %>
-                  商品一覧
                   <% end %>
                 </li>
             </ul>
