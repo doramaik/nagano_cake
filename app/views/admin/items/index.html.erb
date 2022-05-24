@@ -1,8 +1,8 @@
 <div class = "container">
     <div class = "col-sm-10 px-sm-0 mx-auto">
-      <h4 class = "mb-5">商品一覧</h4>
+      <h4 class = "mb-5 text-center">商品一覧</h4>
       
-      <table class="table my-5 mx-auto">
+      <table class="table table-hover teble-inverse my-5 mx-auto">
         <thead class = "table-secondary">
           <tr>
             <th>商品ID</th>
@@ -31,6 +31,8 @@
       
       <%= paginate @items %>
       
-      <%= link_to "商品追加", {controller: 'items', action: 'new'}, {method: :get, class: "btn btn-sm btn-success add_items px-3" } %>
+      <div class = "text-center">
+        <%= link_to "商品追加", {controller: 'items', action: 'new'}, {method: :get, class: "btn btn-sm btn-success add_items px-3"} %>
+      </div>
     </div>
 </div>
