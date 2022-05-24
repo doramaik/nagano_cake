@@ -22,6 +22,7 @@
         </th>
         <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
         <td>
+          <!--view内で個数計算-->
           <% amounts = order.order_details.map { |order_detail| order_detail.amount } %>
           <%= amounts.sum %>
         </td>
