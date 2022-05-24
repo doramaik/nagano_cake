@@ -7,9 +7,10 @@
       <tr>
         <th scope="col">注文日</th>
         <th scope="col">配送先</th>
+        <th scope="col">注文商品</th>
         <th scope="col">支払い金額</th>
         <th scope="col">注文ステータス</th>
-        <th scope="col">注文詳細</th>
+        <th scope="col">注文詳細一覧</th>
       </tr>
     </thead>
 
@@ -18,10 +19,13 @@
       <tr>
         <td><%= order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
         <td>〒
-        　<%= order.postal_code %>
+        　<%= order.address.postal_code %>
           <%= order.shipping_address %>
           <%= order.shipping_name %>
         </td>
+         <td>
+           会員のカート内の商品全て
+         </td>
         <td><%= order.amount_billed %></td>
         <td><%= order.order_status_i18n %></td>
         <td><%= link_to '表示する',  public_order_path(order), class: "btn btn-sm btn-info public_order_#{order.id}" %></td>
