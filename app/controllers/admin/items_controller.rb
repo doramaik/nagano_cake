@@ -28,8 +28,9 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    
     if @item.update(item_params)
-      redirect_to admin_items_path
+      redirect_to admin_item_path
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :image, :text, :price, :genre_id, :is_active)
+    params.require(:item).permit(:name, :text, :price, :genre_id, :is_active)
   end
 
 end

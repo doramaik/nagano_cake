@@ -1,12 +1,17 @@
 <h1>商品詳細</h1>
 <div class="conteiner">
   <div class="row">
-    
+
   </div>
 </div>
 
 
 <table class="table table-hover teble-inverse">
+
+  <tr>
+
+    <td><%= image_tag @item.get_image("300x300") %></td>
+  </tr>
   <tr>
     <td>商品名</td>
     <td><%= @item.name %></td>
@@ -17,7 +22,7 @@
   </tr>
   <tr>
     <td>ジャンル</td>
-    <td><%= @item.genre_id %></td>
+    <td><%= @item.genre.name %></td>
   </tr>
   <tr>
     <td>税抜き価格</td>
@@ -25,8 +30,8 @@
   </tr>
   <tr>
     <td>販売ステータス</td>
-    <td><%= @item.is_active %></td>
+    <td><%= @item.is_active ? "販売中" : "販売停止中" %></td>
   </tr>
 </table>
 
-<%= link_to edit_admin_path(@item.id), class:"btn btn-lg btn-success" do %>編集する<% end %>
+<%= link_to edit_admin_item_path(@item.id), class: "btn btn-lg btn-success" do %>編集する<% end %>

@@ -1,5 +1,5 @@
 <h1>ショッピングカート</h1>
-<%= link_to public_cart_items_destroy_all_path, class: "btn btn-danger btn-sm" do %>カートを空にする<% end %>
+<%= link_to public_cart_items_destroy_all_path, method: :delete, class: "btn btn-danger btn-sm" do %>カートを空にする<% end %>
 <table>
   <thead>
       <th>商品名</th>
@@ -13,7 +13,13 @@
       <tr>
           <td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.with_tax_price %></td>
-          <td><%#= cart_item.item.amount %></td>
+          <td>
+            <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
+            <%= f.hidden_field :amount, value: cart_item.amount %>
+            <%= f.select :amount,*[1..10] %>
+            <%= f.submit "変更", class: "btn btn-sm btn-success" %>
+            <% end %>
+          </td>
           <td><%= cart_item.subtotal %></td>
           <td><%= link_to public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>削除する<% end %></td>
           <!--@totalに小計をeach文で繰り返し入れていく-->
