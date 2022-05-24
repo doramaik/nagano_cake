@@ -6,7 +6,7 @@ class Public::CartItemsController < ApplicationController
     # @cart_items.current_customer_id = current_customer.id
     # @cart_items = CartItem.all
     # カート内商品の合計金額 デフォルトを０にする
-     @total =0
+  
   end
 
   def create

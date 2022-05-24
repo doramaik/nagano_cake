@@ -1,7 +1,7 @@
 <div class= "container">
  <div class = "row">
   <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-   
+
    <h4>ジャンル一覧・追加</h4>
    <%= form_with model: [:admin, @genre], local: true do |f| %>
     <div class = "form-inline my-5">
@@ -10,8 +10,8 @@
      <div class = "ml-3"><%= f.submit "新規登録", class: "btn btn-sm btn-success px-3" %></div>
     </div>
    <% end %>
-   
-   
+
+
      <table class="table mt-3">
       <thead class = "table-secondary">
        <tr>
@@ -34,5 +34,5 @@
  </div>
 </div>
 
-
+<%= paginate @genres %>
 
