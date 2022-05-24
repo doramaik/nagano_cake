@@ -9,8 +9,10 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to admin_items_path
+      flash[:notice] = '商品を作成しました'
     else
       render :new
+      flash[:alret] = '商品作成に失敗しました'
     end
   end
 
@@ -31,8 +33,10 @@ class Admin::ItemsController < ApplicationController
 
     if @item.update(item_params)
       redirect_to admin_item_path
+      flash[:notice] = '商品編集が成功しました'
     else
       render :edit
+      flash[:alret] = '商品編集が失敗しました'
     end
   end
 

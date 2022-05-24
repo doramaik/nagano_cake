@@ -96,6 +96,12 @@
       </nav>
     </header>
      <%= render 'public/searches/form' %>
+<div class="text-success">
+  <%= flash[:notice] %>
+</div>
+<div class="text-danger">
+  <%= flash[:alret] %>
+</div>
     <%= yield %>
   </body>
 </html>
