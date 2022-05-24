@@ -52,7 +52,8 @@
           <td><%= order_detail.item.name %></td>
           <td><%= order_detail.item.with_tax_price %></td>
           <td><%= order_detail.amount %></td>
-          <td><%= order_detail.subtotal %></td>
+          <td><%= order_detail.cart_item.subtotal %></td>
+          <% @total +=  cart_item.subtotal %>
       </tr>
   <% end %>
   </tbody>
