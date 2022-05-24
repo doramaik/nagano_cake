@@ -10,8 +10,11 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
 
 
-    # # 商品合計を出すため
-    @sum = 0
+    #  商品合計を出すため
+    # @sum = 0
+    # @subtotals.each do |a|
+    #   @sum = @sum+a
+    # end
     @subtotals = @order_details.map { |order_detail| order_detail.once_price * order_detail.quantity }
     @sum = @subtotals.sum
 

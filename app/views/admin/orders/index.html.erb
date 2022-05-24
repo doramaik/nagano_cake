@@ -21,7 +21,10 @@
           <% end %>
         </th>
         <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-        <td><%#= order.order_details.amount %></td>
+        <td>
+          <% amounts = order.order_details.map { |order_detail| order_detail.amount } %>
+          <%= amounts.sum %>
+        </td>
         <td><%= order.order_status_i18n %></td>
       </tr>
       <% end %>
