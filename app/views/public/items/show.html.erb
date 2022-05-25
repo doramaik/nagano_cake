@@ -4,13 +4,13 @@
     <div class="body">
       <p><%= @item.name %></p>
       <p><%= @item.text %></p>
-      <p><%= @item.price %></p>
+      <p><%= @item.price %>円</p>
       <p><%= @item.is_active ? "販売中" : "販売停止中" %></p>
     </div>
-
+<% if customer_signed_in? %>
 <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
 <%= f.hidden_field :item_id, value: @item.id %>
 <%= f.select :amount,*[1..10], include_blank: "個数選択" %>
-
-<%= f.submit "カートに追加", class: "btn btn-sm btn-success" %>
+   <%= f.submit "カートに追加", class: "btn btn-sm btn-success" %>
+<% end %>
 <% end %>
