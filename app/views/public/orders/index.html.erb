@@ -26,7 +26,7 @@
          <td>
            会員のカート内の商品全て
          </td>
-        <td><%= order.amount_billed %></td>
+        <td><%= order.amount_billed+order.shipping_fee %></td>
         <td><%= order.order_status_i18n %></td>
         <td><%= link_to '表示する',  public_order_path(order), class: "btn btn-sm btn-info public_order_#{order.id}" %></td>
       </tr>
