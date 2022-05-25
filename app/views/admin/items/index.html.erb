@@ -1,7 +1,7 @@
 <div class = "container">
     <div class = "col-sm-10 px-sm-0 mx-auto">
       <h4 class = "mb-5 text-center">商品一覧</h4>
-      
+
       <table class="table table-hover teble-inverse my-5 mx-auto">
         <thead class = "table-secondary">
           <tr>
@@ -28,9 +28,9 @@
           <% end %>
         </tbody>
       </table>
-      
+
       <%= paginate @items %>
-      
+
       <div class = "text-center">
         <%= link_to "商品追加", {controller: 'items', action: 'new'}, {method: :get, class: "btn btn-sm btn-success add_items px-3"} %>
       </div>

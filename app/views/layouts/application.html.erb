@@ -116,13 +116,23 @@
         </div>
       </nav>
     </header>
-     <%= render 'public/searches/form' %>
-<div class="text-success">
-  <%= flash[:notice] %>
-</div>
-<div class="text-danger">
-  <%= flash[:alret] %>
-</div>
+    
+    <%= render 'public/searches/form' %>
+    <div class="text-success">
+      <%= flash[:notice] %>
+    </div>
+    <div class="text-danger">
+      <%= flash[:alret] %>
+    </div>
     <%= yield %>
   </body>
+  <footer>
+   <div class="container mt-5 mx-auto bg-light">
+    <div class="row p-3 ">
+      <div class="mx-auto">
+       <p class = "m-0">CopyRight Doramike.inc</p>
+      </div>
+    </div>
+   </div>    
+  </footer>
 </html>
