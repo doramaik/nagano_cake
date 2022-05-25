@@ -24,7 +24,9 @@
           <%= order.shipping_name %>
         </td>
          <td>
-           会員のカート内の商品全て
+          <% order.order_details.each do |order_detail| %>
+            <p><%= order_detail.item.name %></p>
+          <%end %>
          </td>
         <td><%= order.amount_billed+order.shipping_fee %></td>
         <td><%= order.order_status_i18n %></td>
@@ -32,8 +34,6 @@
       </tr>
       <% end %>
     </tbody>
-
   </table>
-
 </div>
 
