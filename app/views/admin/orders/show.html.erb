@@ -39,9 +39,9 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <% @total = 0 %>
               <% @order_details.each do |order_detail| %>
+              <% @total = 0 %>
+            <tr>
               <td><%= order_detail.item.name %></td>
               <td><%= order_detail.item.with_tax_price %></td>
               <td><%= order_detail.amount %></td>
