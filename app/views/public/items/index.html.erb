@@ -1,23 +1,27 @@
 <body>
   <div>
     <main role ="main">
+      <div class="col-md-5">
       <h2>商品一覧</h2>
+      </div>
       <div class="album py-5 bg-light">
-        <div calass="container">
-          <div class="row">
+          <div class="d-flex justify-content-around">
             <% @items.each do |item| %>
-              <div class="col-md-2">
-                <%= image_tag item.get_image("100x100") %>
+            
+              <div class="col-md-2 ml-5 border border-dark">
+                <%= link_to public_item_path(item.id) do %>
+                  <%= image_tag item.get_image("100x100") %>
                 <div class="body">
-                  <p><%= link_to item.name, public_item_path(item) %></p>
-                  <p><%= item.genre.name %></p>
-                  <p><%= item.text %></p>
-                  <p><%= item.price %></p>
-                  <p><%= item.is_active ? "販売中" : "販売停止中" %></p>
+                  <%= item.name %>
+                <% end %>
+                  <p><%= item.price %>円</p>
                 </div>
               </div>
             <% end %>
           </div>
+        <div class="d-flex justify-content-center">
+          <div class="mt-5">
+        <%= paginate @items %>
         </div>
       </div>
     </main>
