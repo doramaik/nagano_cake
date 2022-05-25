@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
     # 注文履歴の商品合計を出すため
-    @subtotals = @order_details.map { |order_detail| order_detail.price * order_detail.amount }
+    @subtotals = @order_details.map { |order_detail| order_detail.subtotal }
     @sum = @subtotals.sum
     @order.shipping_fee = 800
     @order_details = @order.order_details
