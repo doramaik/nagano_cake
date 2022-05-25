@@ -14,7 +14,7 @@
           <p><%= @item.text %></p>
           <p><%= @item.price %>円</p>
           <p><%= @item.is_active ? "販売中" : "販売停止中" %></p>
-          
+          <% if @item.is_active == true %>
           <% if customer_signed_in? %>
             <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
               <%= f.hidden_field :item_id, value: @item.id %>
@@ -22,6 +22,7 @@
               <%= f.select :amount,*[1..10] %>
               <%= f.submit "カートに追加", class: "btn btn-sm btn-success" %>
             <% end %>
+          <% end %>
           <% end %>
         </div>
       </div>
