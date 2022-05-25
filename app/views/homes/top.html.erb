@@ -1,35 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-2">
-    </div>
-    <div class="col-xs-9 col-xs-offset-1 top-main">
-      <div class="row product-card-content">
-        <table>
-        <tr><th>ようこそようこそながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧ができますが、<br>
-            購入には会員登録が必要になります。<br></th></tr>
-
-        <tr><th><h3>新着商品</h3></th></tr>
-        </table>
-     
-        <% @items.each do |item| %>
-        <div class="thumbnail product-thumbnail col-xs-2">
-          <div><%= image_tag item.get_image("200x200") %></div>
-          <div class="caption">
-        <%= link_to public_item_path(item.id) do %>
-            <p><%= item.name %></p>
-        <% end %>
-            <p><%= "#{item.price}円" %></p>
-          </div>
-        </div>
-
-        <% end %>
-      </div>
-      
-    </div>
-  </div>
+<div class="d-flex justify-content-center">
+  ようこそながのCAKEへ！<br>
+  このサイトは、ケーキ販売のECサイトになります。<br>
+  会員でない方も商品の閲覧ができますが、<br>
+  購入には会員登録が必要になります。<br>
 </div>
+        <div class="col-md-5">
+        <h3>新着商品</h3>
+        </div>
+        <div class="album py-5 bg-light">
+        <div class="d-flex justify-content-around">
+            <% @items.each do |item| %>
+            
+              <div class="col-md-2 ml-5 border border-dark">
+                <%= link_to public_item_path(item.id) do %>
+                  <%= image_tag item.get_image("100x100") %>
+                <div class="body">
+                  <%= item.name %>
+                <% end %>
+                  <p><%= item.price %>円</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          </div>
+        <div class="d-flex justify-content-end col-md-10 mt-5">
+        <%= link_to public_items_path do %>
+         全ての商品を見る >>
+        <% end %>
+        </div>
 
 
 

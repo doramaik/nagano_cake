@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
  root to: 'homes#top'
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -44,6 +45,9 @@ devise_for :customers,skip: [:passwords], controllers: {
     resources :customers , only: [:show, :edit, :update]
     get "customers/:id/quit" => 'customers#quit'
     patch "customers/:id/quit" => 'customers#withdraw'
+
+    #ジャンル
+    resources :genres, omly: [:index,:show]
 
     #検索
     get "search" => "searches#search"

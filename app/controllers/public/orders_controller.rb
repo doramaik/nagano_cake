@@ -1,17 +1,21 @@
 class Public::OrdersController < ApplicationController
+<<<<<<< HEAD
   #全てのアクションの前にユーザーがログインしているか確認する。
   #ログインしていない時、ログインページに遷移。
   before_action :authenticate_customer!
+=======
+  before_action :correct_customer, only: [:show]
+>>>>>>> 9cf94632905ab13b44f7289e57aea8982893e846
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
     # 注文履歴の商品合計を出すため
-    @subtotals = @order_details.map { |order_detail| order_detail.price * order_detail.amount }
+    @subtotals = @order_details.map { |order_detail| order_detail.subtotal }
     @sum = @subtotals.sum
     @order.shipping_fee = 800
     @order_details = @order.order_details
@@ -76,4 +80,11 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:shipping_fee, :amount_billed, :payment_method, :postal_code, :shipping_address, :shipping_name)
   end
+
+  def correct_customer
+    @order = Order.find(params[:id])
+    @customer = @order.customer
+    redirect_to(public_items_path) unless @customer == current_customer
+  end
+
 end
