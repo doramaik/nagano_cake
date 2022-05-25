@@ -1,4 +1,8 @@
 class Public::CustomersController < ApplicationController
+  #全てのアクションの前にユーザーがログインしているか確認する。
+  #ログインしていない時、ログインページに遷移。
+  before_action :authenticate_customer!
+
   def show
     @customer = Customer.find(params[:id])
   end
