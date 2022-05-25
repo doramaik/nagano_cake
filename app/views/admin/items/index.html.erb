@@ -20,7 +20,8 @@
                  <%= item.name %>
                 <% end %>
               </th>
-              <th><%= item.price %>円</th>
+              <th><%= item.with_tax_price %>円</th>
+              <p>(税込)</p>
               <th><%= item.genre.name %></th>
               <th><%= item.is_active ? "販売中" : "販売停止" %></th>
             </tr>

@@ -14,14 +14,15 @@
       <div class="album py-5 bg-light">
           <div class="d-flex justify-content-around">
             <% @items.each do |item| %>
-            
+
               <div class="col-md-2">
                 <%= link_to public_item_path(item.id) do %>
                   <%= image_tag item.get_image("100x100") %>
                 <div class="body">
                   <%= item.name %>
                 <% end %>
-                  <p><%= item.price %>円</p>
+                  <p><%= item.with_tax_price %>円</p>
+                  <p>(税込)</p>
                 </div>
               </div>
             <% end %>
@@ -32,7 +33,7 @@
         </div>
       </div>
   </div>
-   
+
     </div>
   </div>
 </div>
