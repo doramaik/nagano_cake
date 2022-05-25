@@ -1,35 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-2">
+<div class="d-flex justify-content-center">
+  ようこそようこそながのCAKEへ！<br>
+  このサイトは、ケーキ販売のECサイトになります。<br>
+  会員でない方も商品の閲覧ができますが、<br>
+  購入には会員登録が必要になります。<br>
+</div>
+    <div calass="container">
+      <div class="row">
+        <div class="col-md-5">
+        <h3>新着商品</h3>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-9 col-xs-offset-1 top-main">
-      <div class="row product-card-content">
-        <table>
-        <tr><th>ようこそようこそながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧ができますが、<br>
-            購入には会員登録が必要になります。<br></th></tr>
-
-        <tr><th><h3>新着商品</h3></th></tr>
-        </table>
-     
-        <% @items.each do |item| %>
-        <div class="thumbnail product-thumbnail col-xs-2">
-          <div><%= image_tag item.get_image("200x200") %></div>
-          <div class="caption">
-        <%= link_to public_item_path(item.id) do %>
+        <div class="d-flex justify-content-between">
+          
+          <% @items.each do |item| %>
+           <%= link_to public_item_path(item.id) do %>
+            <p><%= image_tag item.get_image("200x200") %></p>
             <p><%= item.name %></p>
-        <% end %>
-            <p><%= "#{item.price}円" %></p>
+            <p><%= item.price %>円</p>
+           <% end %>
+          <% end %>
           </div>
         </div>
 
-        <% end %>
-      </div>
-      
-    </div>
-  </div>
-</div>
+
+
 
 
 
