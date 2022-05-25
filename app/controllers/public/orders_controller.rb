@@ -1,9 +1,9 @@
 class Public::OrdersController < ApplicationController
-  before_action :correct_customer, only: [:show]
+
   #全てのアクションの前にユーザーがログインしているか確認する。
   #ログインしていない時、ログインページに遷移。
   before_action :authenticate_customer!
-
+  before_action :correct_customer, only: [:show]
 
   def index
     @orders = current_customer.orders
