@@ -4,8 +4,8 @@ class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @address = Address.new
     @addresses = current_customer.addresses
+    @address = Address.new
   end
 
   def create
@@ -18,6 +18,7 @@ class Public::AddressesController < ApplicationController
     else
       @addresses = Address.all
       render :index
+
     end
 
   end
