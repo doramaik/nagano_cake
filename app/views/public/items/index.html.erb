@@ -1,6 +1,13 @@
-<body>
-  <div>
-    <main role ="main">
+
+<div class="container px-5 px-sm-0">
+
+  <div class="row">
+    <div class= "col-md-3">
+      <%= render 'public/genres/index', genres: @genres %>
+    </div>
+    <div class= "col-md-8 offset-md-1">
+      <div>
+
       <div class="col-md-5">
       <h2>商品一覧</h2>
       </div>
@@ -24,6 +31,8 @@
         <%= paginate @items %>
         </div>
       </div>
-    </main>
   </div>
-</body>
+   
+    </div>
+  </div>
+</div>

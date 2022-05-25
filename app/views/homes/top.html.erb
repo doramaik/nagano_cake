@@ -1,16 +1,18 @@
-<div class="d-flex justify-content-center">
-  ようこそながのCAKEへ！<br>
-  このサイトは、ケーキ販売のECサイトになります。<br>
-  会員でない方も商品の閲覧ができますが、<br>
-  購入には会員登録が必要になります。<br>
-</div>
-        <div class="col-md-5">
+<div class="container px-5 px-sm-0">
+
+  <div class="row">
+    <div class= "col-md-3">
+      <%= render 'public/genres/index', genres: @genres %>
+    </div>
+
+ <div class= "col-md-8 offset-md-1">
+ <div class="col-md-5">
         <h3>新着商品</h3>
         </div>
         <div class="album py-5 bg-light">
         <div class="d-flex justify-content-around">
             <% @items.each do |item| %>
-            
+
               <div class="col-md-2 ml-5 border border-dark">
                 <%= link_to public_item_path(item.id) do %>
                   <%= image_tag item.get_image("100x100") %>
@@ -28,6 +30,13 @@
          全ての商品を見る >>
         <% end %>
         </div>
+
+    </div>
+       </div>
+  </div>
+</div>
+
+
 
 
 
