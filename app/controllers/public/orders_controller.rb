@@ -1,13 +1,15 @@
 class Public::OrdersController < ApplicationController
+  before_action :correct_customer, only: [:show]
+
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
     # 注文履歴の商品合計を出すため
-    @subtotals = @order_details.map { |order_detail| order_detail.subtotal }
+    @subtotals = @order_details.map { |order_detail| order_detail.price * order_detail.amount }
     @sum = @subtotals.sum
     @order.shipping_fee = 800
     @order_details = @order.order_details
@@ -72,4 +74,11 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:shipping_fee, :amount_billed, :payment_method, :postal_code, :shipping_address, :shipping_name)
   end
+
+  def correct_customer
+    @order = Order.find(params[:id])
+    @customer = @order.customer
+    redirect_to(public_items_path) unless @customer == current_customer
+  end
+
 end
