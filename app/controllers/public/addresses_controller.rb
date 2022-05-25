@@ -1,4 +1,8 @@
 class Public::AddressesController < ApplicationController
+  #全てのアクションの前にユーザーがログインしているか確認する。
+  #ログインしていない時、ログインページに遷移。
+  before_action :authenticate_customer!
+
   def index
     @address = Address.new
     @addresses = Address.all
@@ -7,9 +11,15 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to request.referer
-    flash[:notice] = "配送先を登録しました"
+
+    if @address.save
+      redirect_to request.referer
+      flash[:notice] = "配送先を登録しました。"
+    else
+      render :index
+      @addresses = Address.all
+    end
+
   end
 
   def edit
@@ -17,12 +27,12 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
-    address = Address.find(params[:id])
-    if address.update(address_params)
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
       redirect_to public_addresses_path
+      flash[:notice] = "配送先を変更しました。"
     else
-      @shipping_address = ShippingAddress.find(params[:id])
-      render "customers/addresses/edit"
+      render :edit
     end
   end
 
