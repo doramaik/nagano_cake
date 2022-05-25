@@ -5,7 +5,7 @@ class Public::AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @addresses = Address.all
+    @addresses = current_customer.addresses
   end
 
   def create
@@ -16,8 +16,8 @@ class Public::AddressesController < ApplicationController
       redirect_to request.referer
       flash[:notice] = "配送先を登録しました。"
     else
-      render :index
       @addresses = Address.all
+      render :index
     end
 
   end
