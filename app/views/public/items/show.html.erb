@@ -1,12 +1,14 @@
 
-
-    <%= image_tag @item.get_image("300x300") %>
-    <div class="body">
+<div class="d-flex justify-content-center">
+    <div class="body mt-5">
+      <%= image_tag @item.get_image("250x250") %>
+    </div>
+    <div class="body mt-5 ml-5">
       <p><%= @item.name %></p>
       <p><%= @item.text %></p>
       <p><%= @item.price %>円</p>
       <p><%= @item.is_active ? "販売中" : "販売停止中" %></p>
-    </div>
+
 <% if customer_signed_in? %>
 <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
 <%= f.hidden_field :item_id, value: @item.id %>
@@ -15,3 +17,5 @@
    <%= f.submit "カートに追加", class: "btn btn-sm btn-success" %>
 <% end %>
 <% end %>
+      </div>
+</div>
