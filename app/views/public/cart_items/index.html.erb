@@ -1,4 +1,5 @@
-<div class="container">
+  <% if @cart_items.exists? %>
+  <div class="container mt-5">
     <div class="row">
     <div class="col">
 <h2>ショッピングカート</h2>
@@ -8,15 +9,15 @@
 <%= link_to public_cart_items_destroy_all_path, method: :delete, class: "btn btn-danger" do %>カートを空にする<% end %>
 </div>
 </div>
-<table class="table table-bordered">
+<table class="table table-bordered table table-sm">
   <thead class="table-secondary">
     <tr>
-      <th scope="col">商品名</th>
-      <th scope="col">単価(税込)</th>
-      <th scope="col">個数</th>
-      <th scope="col">小計</th>
-      <th scope="col"></th>
-      </tr>
+      <th scope="col" style="width: 40%">商品名</th>
+      <th scope="col" style="width: 15%">単価(税込)</th>
+      <th scope="col" style="width: 15%">個数</th>
+      <th scope="col" style="width: 15%">小計</th>
+      <th scope="col" style="width: 15%"></th>
+    </tr>
 
   </thead>
   <tbody>
@@ -24,19 +25,19 @@
   <% @cart_items.each do |cart_item| %>
       <tr>
           <td scope="row">
-            <%= image_tag cart_item.item.get_image("50x50") %>
-            <%= cart_item.item.name %>
-            </td>
-          <td scope="row"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-          <td scope="row">
+            <%= image_tag cart_item.item.get_image("50x50"), class: "mr-4" %>
+            <strong><%= cart_item.item.name %></strong>
+          </td>
+          <td scope="row" class="text-center"><strong><%= cart_item.item.with_tax_price.to_s(:delimited) %>円</strong></td>
+          <td scope="row" class="text-center">
             <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
             <%= f.hidden_field :amount, value: cart_item.amount %>
             <%= f.select :amount,*[1..10] %>
             <%= f.submit "変更", class: "btn btn-sm btn-success" %>
             <% end %>
           </td>
-          <td scope="row"><%= cart_item.subtotal.to_s(:delimited) %></td>
-          <td scope="row"><%= link_to public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger btn-sm" do %>削除する<% end %></td>
+          <td scope="row" class="text-center"><strong><%= cart_item.subtotal.to_s(:delimited) %>円</strong></td>
+          <td scope="row" class="text-center"><%= link_to public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" do %>削除する<% end %></td>
           <!--@totalに小計をeach文で繰り返し入れていく-->
           <% @total += cart_item.subtotal %>
       </tr>
@@ -64,3 +65,12 @@
 </div>
 </div>
 </div>
+ <% else %>
+ <div class="container text-center mt-5">
+<div class="row">
+  <div class="col">
+ <h1>カート内に商品はありません</h1>
+ </div>
+ </div>
+ </div>
+  <% end %>
