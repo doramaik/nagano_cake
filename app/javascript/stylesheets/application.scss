@@ -1,2 +1,21 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body{
+    font-family: 'Yomogi', cursive !important;
+
+}
+a {
+    text-decoration: none !important;
+    color: #cc7965;
+    transition: color .5s;
+}
+a:hover{
+    color: #e6bc87;
+}
+h1{
+    justify-content: center;
+}
+header, footer{
+    background-color: #f1e2be !important;
+}
