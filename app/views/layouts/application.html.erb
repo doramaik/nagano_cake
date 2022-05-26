@@ -13,7 +13,7 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg ">
         <div class= "container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,63 +21,61 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <% if admin_signed_in? %>
                 <nav class="nav navbar-brand navbar-left header-logo">
-                  <%= link_to admin_orders_path, class: "header-logo-letter" do %>
-                    <%= image_tag('cake_image.jpg', size: '100x100',class: 'shop_logo') %>
-                    <strong>ながのCAKE</strong>
+                  <%= link_to admin_orders_path do %>
+                    <h1>ながのCAKE</h1>
                   <% end %>
                 </nav>
               <ul class="navbar-nav ml-auto">
                   <li>
-                    <%= link_to  admin_items_path, class: 'nav-link text-dark' do %>
+                    <%= link_to  admin_items_path, class: 'nav-link' do %>
                     商品一覧
                     <% end %>
                   </li>
                    <li>
-                    <%= link_to admin_customers_path, class: 'nav-link text-dark' do %>
+                    <%= link_to admin_customers_path, class: 'nav-link' do %>
                     会員一覧
                     <% end %>
                   </li>
                    <li>
-                    <%= link_to admin_orders_path, class: 'nav-link text-dark' do %>
+                    <%= link_to admin_orders_path, class: 'nav-link' do %>
                     注文履歴一覧
                     <% end %>
                   </li>
                    <li>
-                    <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+                    <%= link_to admin_genres_path, class: 'nav-link' do %>
                     ジャンル一覧
                     <% end %>
                   </li>
                    <li>
-                    <%= link_to  destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                    <%= link_to  destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
                     ログアウト
                     <% end %>
                   </li>
               </ul>
               <% elsif customer_signed_in? %>
                 <nav class="nav navbar-brand navbar-left header-logo">
-                  <%= link_to root_path, class: "header-logo-letter" do %>
-                    <%= image_tag('cake_image.jpg', size: '100x100',class: 'shop_logo') %>
-                    <strong>ながのCAKE</strong>
+                  <%= link_to root_path, class: "d-flex" do %>
+                    <h1>ながのCAKE</h1>
                   <% end %>
                 </nav>
                 <ul class="navbar-nav ml-auto">
                    <li>
-                    <%= link_to public_customer_path(current_customer.id), class: 'nav-link text-dark' do %>
+                    <%= link_to public_customer_path(current_customer.id), class: 'nav-link' do %>
                     マイページ
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to  public_items_path, class: 'nav-link text-dark' do %>
+                    <%= link_to  public_items_path, class: 'nav-link' do %>
                     商品一覧
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to  public_cart_items_path, class: 'nav-link text-dark' do %>
+                    <%= link_to  public_cart_items_path, class: 'nav-link' do %>
                     カート
                     <% end %>
                   </li>
                    <li>
-                    <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                    <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link' do %>
                     ログアウト
                     <% end %>
                   </li>
@@ -85,28 +83,27 @@
               <% else %>
                   <nav class="nav navbar-brand navbar-left header-logo">
                       <%= link_to root_path, class: "header-logo-letter" do %>
-                        <%= image_tag('cake_image.jpg', size: '100x100',class: 'shop_logo') %>
-                        <strong>ながのCAKE</strong>
+                        <h1>ながのCAKE</h1>
                       <% end %>
                     </nav>
                   <ul class="navbar-nav ml-auto">
                     <li>
-                    <%= link_to  home_about_path, class: 'nav-link text-dark' do %>
+                    <%= link_to  home_about_path, class: 'nav-link' do %>
                     About
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to  public_items_path, class: 'nav-link text-dark' do %>
+                    <%= link_to  public_items_path, class: 'nav-link' do %>
                     商品一覧
                     <% end %>
                   </li>
                    <li>
-                    <%= link_to new_customer_registration_path, class: 'nav-link text-dark' do %>
+                    <%= link_to new_customer_registration_path, class: 'nav-link' do %>
                     新規登録
                     <% end %>
                   </li>
                    <li>
-                    <%= link_to customer_session_path, class: 'nav-link text-dark' do %>
+                    <%= link_to customer_session_path, class: 'nav-link' do %>
                     ログイン
                     <% end %>
                   </li>
@@ -131,7 +128,7 @@
     </div>
     <%= yield %>
   </body>
-  <footer class = "bg-light">
+  <footer>
    <div class="container mt-5 mx-auto">
     <div class="row p-3 ">
       <div class="mx-auto">
