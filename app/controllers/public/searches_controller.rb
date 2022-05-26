@@ -4,9 +4,10 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_customer!
 
 	def search
-		@model = params[:model]
+		# @model = params[:model]
 		@content = params[:content]
-		@method = params[:method]
-		@records = Item.search_for(@content, @method)
+		# @method = params[:method]
+		# @records = Item.search_for(@content)
+		@records = Item.where('name LIKE ?', '%'+@content+'%')
 	end
 end
