@@ -12,13 +12,13 @@ class Item < ApplicationRecord
 
 
 
-  def self.search_for(content, method)
-    if method == "partial"
-       Item.where('name LIKE ?', '%'+content+'%')
-    else
-      @items = Item.all
-    end
-  end
+  # def self.search_for(content)
+  #   if method == "partial"
+  #     Item.where('name LIKE ?', '%'+content+'%')
+  #   else
+  #     @items = Item.all
+  #   end
+  # end
 
 
   # def get_image(width, height)
