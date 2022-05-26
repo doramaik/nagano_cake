@@ -1,0 +1,39 @@
+
+<div class="container px-5 px-sm-0">
+
+  <div class="row">
+    <div class= "col-md-3">
+      <%= render 'public/genres/index', genres: @genres %>
+    </div>
+    <div class= "col-md-8 offset-md-1">
+      <div>
+
+      <div class="col-md-5">
+      <h2>商品一覧</h2>
+      </div>
+      <div class="album py-5 bg-light">
+          <div class="d-flex justify-content-around">
+            <% @items.each do |item| %>
+
+              <div class="col-md-2">
+                <%= link_to public_item_path(item.id) do %>
+                  <%= image_tag item.get_image("100x100") %>
+                <div class="body">
+                  <%= item.name %>
+                <% end %>
+                  <p><%= item.with_tax_price %>円</p>
+                  <p>(税込)</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <div class="d-flex justify-content-center">
+          <div class="mt-5">
+        <%= paginate @items %>
+        </div>
+      </div>
+  </div>
+
+    </div>
+  </div>
+</div>

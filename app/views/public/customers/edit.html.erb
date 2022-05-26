@@ -1,0 +1,59 @@
+
+<div class = "container">
+  <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  <%= form_with model: @customer, url: public_customer_path do |f| %>
+
+
+    <div class="form-group row">
+      <%= f.label :氏名, class: "col-sm-3" %>
+      <%= f.text_field :last_name, class: "form-control col-sm-4" %>
+      <%= f.text_field :first_name, class: "form-control col-sm-4" %>
+    </div>
+
+    <div class="form-group row">
+      <dt class="col-sm-3"><%= f.label :フリガナ %></dt>
+      <%= f.text_field :last_name_kana, class: "form-control col-sm-4" %>
+      <%= f.text_field :first_name_kana, class: "form-control col-sm-4" %>
+    </div>
+
+    <div class="form-group row">
+      <dt class="col-sm-3"><%= f.label :郵便番号 %></dt>
+      <%= f.text_field :postal_code, class: "form-control col-sm-8" %>
+    </div>
+
+    <div class="form-group row">
+      <dt class="col-sm-3">住所</dt>
+      <%= f.text_field :address, class: "form-control col-sm-8" %>
+    </div>
+
+    <div class="form-group row">
+      <dt class="col-sm-3">電話番号</dt>
+      <%= f.text_field :phone_number, class: "form-control col-sm-8" %>
+    </div>
+
+    <div class="form-group row">
+      <dt class="col-sm-3">メールアドレス</dt>
+      <%= f.email_field :email, class: "form-control col-sm-8" %>
+    </div>
+
+    <div class="form-group row">
+      <dt class="col-sm-3">　</dt>
+
+    <div class="col-sm-5">
+      <%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
+    </div>
+     <div class= "col-sm-3">
+        <%= link_to "退会する", public_path, class: "btn btn-danger" %>
+      </div>
+     </div>
+  <% end %>
+</div>

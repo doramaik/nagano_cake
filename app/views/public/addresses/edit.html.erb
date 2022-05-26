@@ -1,0 +1,31 @@
+<h2>配送先編集</h2>
+
+<!--エラーメッセージ-->
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<div class= "conteiner">
+  <%= form_with model: [:public, @address] do |f| %>
+    <div class="row mx-auto form-group">
+      <dt class="col-sm-3"><%= f.label "郵便番号（ハイフンなし）" %></dt>
+      <dd class="col-sm-4"><%= f.text_field :postal_code, class: 'form-control postal_code' %></dd>
+    </div>
+
+    <div class= "row mx-auto form-group">
+      <dt class="col-sm-3"><%= f.label "住所" %></dt>
+      <dd class="col-sm-6"><%= f.text_field :address, class: 'form-control address' %></dd>
+    </div>
+
+    <div class= "row mx-auto form-group">
+      <dt class="col-sm-3"><%= f.label "宛名" %></dt>
+      <dd class="col-sm-4"><%= f.text_field :name, class: 'form-control name' %></dd>
+      <div class= "col-sm-2"><%= f.submit'変更内容を保存', class: 'btn btn-success' %></div>
+    </div>
+    <% end %>

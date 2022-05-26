@@ -1,0 +1,69 @@
+<div class="container mt-5">
+<h2><strong>注文履歴詳細</strong></h2>
+<div class="row">
+  <div class="col-7">
+<h5><strong>注文情報</strong></h5>
+<table class="table table-bordered table table-sm">
+  <tr>
+    <td class="table-secondary"><strong>注文日</strong></td>
+    <td><%= @order.created_at.strftime("%Y年 %m月 %d日") %></td>
+  </tr>
+  <tr>
+    <td class="table-secondary"><strong>配送先</strong></td>
+    <td>〒<%= @order.postal_code %>
+          <%= @order.shipping_address %>
+          <%= @order.shipping_name %>
+    </td>
+  </tr>
+  <tr>
+    <td class="table-secondary"><strong>支払方法</strong></td>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+  <tr>
+    <td class="table-secondary"><strong>ステータス</strong></td>
+    <td><%= @order.order_status_i18n %></td>
+  </tr>
+</table>
+</div>
+<div class="col-3">
+<h5><strong>請求詳細</strong></h5>
+<table class="table table-bordered table table-sm">
+  <tr>
+    <td class="table-secondary"><strong>商品合計</strong></td>
+    <td><%= @sum.to_s(:delimited) %>円</td>
+  </tr>
+  <tr>
+    <td class="table-secondary"><strong>配送料</strong></td>
+    <td><%= @order.shipping_fee.to_s(:delimited) %>円</td>
+  </tr>
+  <tr>
+    <td class="table-secondary"><strong>ご請求金額</strong></td>
+    <td><%=  (@sum + @order.shipping_fee).to_s(:delimited) %>円</td>
+  </tr>
+</table>
+</div>
+</div>
+<div class="row mt-3">
+  <div class="col-8">
+<h5><strong>注文内容</strong></h5>
+<table class="table table-bordered table table-sm">
+  <thead class="table-secondary">
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>個数</th>
+      <th>小計</th>
+  </thead>
+  <tbody>
+  <% @order_details.each do |order_detail| %>
+      <tr>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.item.with_tax_price.to_s(:delimited) %>円</td>
+          <td><%= order_detail.amount %>個</td>
+          <td><%= order_detail.subtotal.to_s(:delimited) %>円</td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container px-5 px-sm-0">
+
+  <div class="row">
+    <div class= "col-md-3">
+      <%= render 'public/genres/index', genres: @genres %>
+    </div>
+    <div class= "col-md-8 offset-md-1">
+      <div class="d-flex justify-content-center">
+        <div class="body mt-5">
+          <%= image_tag @item.get_image("250x250") %>
+        </div>
+        <div class="body mt-5 ml-5">
+          <p><%= @item.name %></p>
+          <p><%= @item.text %></p>
+          <p><%= @item.with_tax_price %>円(税込)</p>
+          <p><%= @item.is_active ? "販売中" : "販売停止中" %></p>
+          <% if @item.is_active == true %>
+          <% if customer_signed_in? %>
+            <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.label :amount, "個数選択" %>
+              <%= f.select :amount,*[1..10] %>
+              <%= f.submit "カートに追加", class: "btn btn-sm btn-success" %>
+            <% end %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
