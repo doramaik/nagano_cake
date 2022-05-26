@@ -40,7 +40,7 @@
         <div class="text-center col-sm-12 col-md-8 col-lg-4 offset-lg-4">
             <div class = "row">
                 <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success col-lg-5 edit_admin_customer_#{@customer.id}" %>
-                <%= link_to "注文履歴一覧",  admin_orders_path, class: "btn btn-info col-lg-5 offset-lg-2  admin_root" %>
+                <%= link_to "注文履歴一覧",  admin_customer_lists_path(@customer), class: "btn btn-info col-lg-5 offset-lg-2  admin_root" %>
             </div>
         </div>
 

@@ -22,6 +22,11 @@ class Admin::CustomersController < ApplicationController
     end
   end
 
+  def lists
+    @customer =Customer.find(params[:customer_id])
+    @orders = @customer.orders
+  end
+
 
   private
 
