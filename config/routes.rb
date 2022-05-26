@@ -14,7 +14,9 @@ devise_for :customers,skip: [:passwords], controllers: {
 
   namespace :admin do
     #会員
-    resources :customers
+    resources :customers do
+      get '/lists' => 'customers#lists'
+    end
     #ジャンル
     resources :genres
     post 'genres/index' => 'genres#index'
