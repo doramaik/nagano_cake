@@ -1,11 +1,37 @@
 
-    <%= form_with url: public_search_path, method: :get, local: true do |f| %>
-    <div class="input-group">
-      <%= f.text_field :content, size: "25", placeholder: "商品検索" %>
+    <%#= form_with url: public_search_path, method: :get, local: true do |f| %>
+    <!--<div class="input-group">-->
+      <%#= f.text_field :content, size: "25", placeholder: "商品検索" %>
       <%#= f.select :model, options_for_select({"商品名" => "item"}) %>
       <%#= f.select :method, options_for_select({"一部検索" => "partial"}) %>
       <%#= f.submit '検索', class: "btn btn-success" %>
-      <%= button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit", :class =>"btn btn-success" %>
-      </div>
-    <% end %>
+      <%#= button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit", :class =>"btn btn-success" %>
+      <!--</div>-->
+    <%# end %>
 
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+  <i class="fa fa-search"></i>
+</button>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">商品検索</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with url: public_search_path, method: :get, local: true do |f| %>
+      <div class="modal-body">
+         <%= f.label :content, "商品名"%>
+         <%= f.text_field :content, size: "50", placeholder: "商品検索" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        <%= button_tag '<i class="fa fa-search"></i>'.html_safe, :type => "submit", :class =>"btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
