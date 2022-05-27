@@ -122,13 +122,14 @@
       </div>
     </div>
     <div class="text-success">
-      <%= flash[:notice] %>
+      <h4><%= flash[:notice] %></h4>
     </div>
     <div class="text-danger">
-      <%= flash[:alret] %>
+      <h4><%= flash[:alret] %></h4>
     </div>
+    <main>
     <%= yield %>
-  </body>
+    </main>
   <footer>
    <div class="container mx-auto">
     <div class="row p-3 ">
@@ -139,4 +140,5 @@
    </div>
   </footer>
   </div>
+  </body>
 </html>
