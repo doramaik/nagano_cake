@@ -9,7 +9,7 @@
       <!--</div>-->
     <%# end %>
 
-<button type="button" class="btn btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
   <i class="fa fa-search"></i>
 </button>
 
@@ -25,7 +25,7 @@
       <%= form_with url: public_search_path, method: :get, local: true do |f| %>
       <div class="modal-body">
          <%= f.label :content, "商品名"%>
-         <%= f.text_field :content, size: "25", placeholder: "商品検索" %>
+         <%= f.text_field :content, size: "50", placeholder: "商品検索" %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
