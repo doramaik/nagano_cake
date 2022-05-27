@@ -52,6 +52,7 @@
                     ログアウト
                     <% end %>
                   </li>
+                  <li><%= render 'public/searches/form' %></li>
               </ul>
               <% elsif customer_signed_in? %>
                 <nav class="nav navbar-brand navbar-left header-logo">
@@ -80,6 +81,7 @@
                     ログアウト
                     <% end %>
                   </li>
+                  <li><%= render 'public/searches/form' %></li>
               </ul>
               <% else %>
                   <nav class="nav navbar-brand navbar-left header-logo">
@@ -108,19 +110,13 @@
                     ログイン
                     <% end %>
                   </li>
+                  <li><%= render 'public/searches/form' %></li>
               </ul>
               <% end %>
           </div>
         </div>
       </nav>
     </header>
-    <div class="container">
-      <div class="row">
-        <div class="col-4 offset-md-9">
-        <%= render 'public/searches/form' %>
-        </div>
-      </div>
-    </div>
     <div class="text-success">
       <h4><%= flash[:notice] %></h4>
     </div>
