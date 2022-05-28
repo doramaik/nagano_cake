@@ -1,74 +1,108 @@
 <div class="container">
 
-
+<div class="row">
+  <div class="col-md-10">
 <h2>新規会員登録</h2>
 
 <%= form_with model: [:public, @customer], url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-<div class="form-group">
-    名前
-    <span>
-    <%= f.label :last_name, "(姓)" %>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "family-name" %>
-    </span>
-    <sapn>
-    <%= f.label :first_name,"(名)" %>
-    <%= f.text_field :first_name, autocomplete: "given-name" %>
-    </span>
-  </div>
 
-  <div class="form-group">
+<div class="form-row mt-4">
+  <div class="col">
+    お名前
+    </div>
+    <div class="col">
+      <%= f.text_field :last_name, autofocus: true, placeholder: "姓", autocomplete: "family-name", class: "form-control" %>
+    </div>
+    <div class="col">
+      <%= f.text_field :first_name, placeholder: "名", autocomplete: "given-name", class: "form-control" %>
+    </div>
+</div>
+<div class="form-row mt-3">
+  <div class="col">
     フリガナ
-    <span>
-    <%= f.label :last_name_kana, "(セイ)" %>
-    <%= f.text_field :last_name_kana, autocomplete: "family-name" %>
-    </span>
-    <span>
-    <%= f.label :first_name_kana, "(メイ)" %>
-    <%= f.text_field :first_name_kana, autocomplete: "given-name" %>
-    </span>
+    </div>
+    <div class="col">
+    <%= f.text_field :last_name_kana, placeholder: "セイ", autocomplete: "family-name", class: "form-control" %>
+    </div>
+    <div class="col">
+    <%= f.text_field :first_name_kana, placeholder: "メイ", autocomplete: "given-name", class: "form-control" %>
+    </div>
+ </div>
+
+  <div class="form-row mt-3">
+    <div class="col">
+    メールアドレス
+    </div>
+    <div class="col">
+    <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email", class: " form-control" %>
+    </div>
+    <div class="col"></div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autocomplete: "email", class: "w-25" %>
+  <div class="form-row mt-3">
+    <div class="col">
+    郵便番号(ハイフンなし)
+    </div>
+    <div class="col">
+    <%= f.text_field :postal_code, placeholder: "0000000", autocomplete: "postal-code", class: "form-control" %>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="form-row mt-3">
+    <div class="col">
+    ご住所
+    </div>
+    <div class="col-8">
+    <%= f.text_field :address, placeholder: "東京都墨田区押上1丁目1-2", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code, autocomplete: "postal-code" %>
+  <div class="form-row mt-3">
+    <div class="col">
+    電話番号(ハイフンなし)
+    </div>
+    <div class="col">
+    <%= f.text_field :phone_number, placeholder: "00000000000", autocomplete: "tel", class: "form-control" %>
+    </div>
+    <div class="col"></div>
   </div>
 
-  <div class="form-group">
-
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, class: "w-50" %>
+  <div class="form-row mt-3">
+    <div class="col">
+    パスワード(6文字以上)
+    </div>
+    <div class="col">
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="col"></div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :phone_number, "電話番号(ハイフンなし)" %>
-    <%= f.text_field :phone_number, autocomplete: "tel" %>
+  <div class="form-row mt-3">
+    <div class="col">
+    パスワード(確認用)
+    </div>
+    <div class="col">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+    <div class="col"></div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :password, "パスワード(6文字以上)" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation, "パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録", class: "btn btn-success" %>
+  <div class="form-row mt-4">
+    <div class="col"></div>
+    <div class="col">
+    <%= f.submit "新規登録", class: "btn btn-success form-control" %>
+    </div>
+    <div class="col"></div>
   </div>
 <% end %>
 
-
+<div class="col-8 mt-5">
 <h5>既に登録済みの方</h5>
-
 <%= render "public/shared/links" %>
+</div>
 
+</div>
+</div>
 </div>
