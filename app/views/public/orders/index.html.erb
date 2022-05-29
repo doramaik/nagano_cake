@@ -17,7 +17,7 @@
     <tbody>
       <% @orders.each do |order| %>
       <tr>
-        <td><%= order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= order.created_at.strftime("%Y年%m月%d日") %></td>
         <td>〒
         　<%= order.postal_code %>
           <%= order.shipping_address %>
@@ -28,7 +28,7 @@
             <p><%= order_detail.item.name %></p>
           <%end %>
          </td>
-        <td><%= order.amount_billed+order.shipping_fee %></td>
+        <td><%= (order.amount_billed+order.shipping_fee).to_s(:delimited) %>円</td>
         <td><%= order.order_status_i18n %></td>
         <td><%= link_to '表示する',  public_order_path(order), class: "btn btn-sm btn-info public_order_#{order.id}" %></td>
       </tr>

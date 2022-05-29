@@ -16,9 +16,9 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td><%= cart_item.item.name %></td>
-                <td><%= cart_item.item.with_tax_price %></td>
+                <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
                 <td><%= cart_item.amount %></td>
-                <td><%= cart_item.subtotal %>
+                <td><%= cart_item.subtotal.to_s(:delimited) %>
                 </td>
               </tr>
                 <!--@totalに小計をeach文で繰り返し入れていく-->
@@ -30,11 +30,11 @@
         <table class="table" style="margin-top: 50px;">
           <tbody>
             <tr>
-              <th scope="row">支払い方法</th>
+              <th scope="row", style="background-color:#F5F5F5;">支払い方法</th>
               <td><%= @order.payment_method_i18n %></td>
             </tr>
             <tr>
-              <th scope="row">お届け先</th>
+              <th scope="row", style="background-color:#F5F5F5;">お届け先</th>
               <td>
                 <p><%= @order.postal_code %>&emsp;<%= @order.shipping_address %></p>
                 <p><%= @order.shipping_name %></p>
@@ -48,16 +48,16 @@
         <table class="table table-bordered">
           <tbody>
             <tr>
-              <td class="active">送料</td>
+              <td class="active", style="background-color:#F5F5F5;">送料</td>
               <td><%= @order.shipping_fee %></td>
             </tr>
             <tr>
-              <td class="active">商品合計</td>
-              <td><%= @total %></td>
+              <td class="active", style="background-color:#F5F5F5;">商品合計</td>
+              <td><%= @total.to_s(:delimited) %></td>
             </tr>
             <tr>
-              <td class="active">請求金額</td>
-              <td><%= @total + @order.shipping_fee %></td>
+              <td class="active", style="background-color:#F5F5F5;">請求金額</td>
+              <td><%= (@total + @order.shipping_fee).to_s(:delimited) %></td>
             </tr>
           </tbody>
         </table>

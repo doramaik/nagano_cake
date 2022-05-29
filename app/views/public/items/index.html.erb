@@ -21,7 +21,7 @@
                 <div class="body">
                   <%= item.name %>
                 <% end %>
-                  <p><%= item.with_tax_price %>円</p>
+                  <p><%= item.with_tax_price.to_s(:delimited) %>円</p>
                   <p>(税込)</p>
                 </div>
               </div>
